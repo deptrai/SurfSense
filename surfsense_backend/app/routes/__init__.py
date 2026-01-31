@@ -25,6 +25,7 @@ from .jira_add_connector_route import router as jira_add_connector_router
 from .linear_add_connector_route import router as linear_add_connector_router
 from .logs_routes import router as logs_router
 from .luma_add_connector_route import router as luma_add_connector_router
+from .dexscreener_add_connector_route import router as dexscreener_add_connector_router
 from .new_chat_routes import router as new_chat_router
 from .new_llm_config_routes import router as new_llm_config_router
 from .notes_routes import router as notes_router
@@ -56,6 +57,7 @@ router.include_router(google_drive_add_connector_router)
 router.include_router(airtable_add_connector_router)
 router.include_router(linear_add_connector_router)
 router.include_router(luma_add_connector_router)
+router.include_router(dexscreener_add_connector_router)
 router.include_router(notion_add_connector_router)
 router.include_router(slack_add_connector_router)
 router.include_router(teams_add_connector_router)
