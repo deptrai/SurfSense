@@ -23,7 +23,7 @@ class DexScreenerConnector:
         
         Note: DexScreener API is public and doesn't require authentication.
         """
-        self.base_url = "https://api.dexscreener.com/latest/dex"
+        self.base_url = "https://api.dexscreener.com"
         self.rate_limit_delay = 0.2  # 200ms delay between requests to respect rate limits
         
     async def make_request(
@@ -106,13 +106,18 @@ class DexScreenerConnector:
             Tuple containing (list of pairs, error message or None)
         """
         try:
-            endpoint = f"tokens/{chain_id}/{token_address}"
+            endpoint = f"token-pairs/v1/{chain_id}/{token_address}"
             response = await self.make_request(endpoint)
             
             if response is None:
                 return [], f"Token not found: {chain_id}/{token_address}"
             
-            pairs = response.get("pairs", [])
+            # DexScreener API returns {"pairs": [...]} or {"pairs": null}
+            if isinstance(response, dict):
+                pairs = response.get("pairs", [])
+            else:
+                # Fallback if API returns list directly (shouldn't happen)
+                pairs = response if isinstance(response, list) else []
             
             if not pairs:
                 return [], f"No trading pairs found for {chain_id}/{token_address}"
@@ -121,6 +126,7 @@ class DexScreenerConnector:
             
         except Exception as e:
             return [], f"Error fetching pairs for {chain_id}/{token_address}: {e!s}"
+
     
     def format_pair_to_markdown(
         self, 

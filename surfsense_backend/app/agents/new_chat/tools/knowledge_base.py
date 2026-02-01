@@ -52,6 +52,7 @@ _ALL_CONNECTORS: list[str] = [
     "CRAWLED_URL",
     "CIRCLEBACK",
     "OBSIDIAN_CONNECTOR",
+    "DEXSCREENER_CONNECTOR",
     # Composio connectors
     "COMPOSIO_GOOGLE_DRIVE_CONNECTOR",
     "COMPOSIO_GMAIL_CONNECTOR",
@@ -89,6 +90,7 @@ CONNECTOR_DESCRIPTIONS: dict[str, str] = {
     "BOOKSTACK_CONNECTOR": "BookStack pages (personal documentation)",
     "CIRCLEBACK": "Circleback meeting notes, transcripts, and action items",
     "OBSIDIAN_CONNECTOR": "Obsidian vault notes and markdown files (personal notes)",
+    "DEXSCREENER_CONNECTOR": "DexScreener real-time cryptocurrency trading pair data and market information",
     # Composio connectors
     "COMPOSIO_GOOGLE_DRIVE_CONNECTOR": "Google Drive files via Composio (personal cloud storage)",
     "COMPOSIO_GMAIL_CONNECTOR": "Gmail emails via Composio (personal emails)",
@@ -608,6 +610,19 @@ async def search_knowledge_base_async(
                     start_date=resolved_start_date,
                     end_date=resolved_end_date,
                 )
+                all_documents.extend(chunks)
+
+            elif connector == "DEXSCREENER_CONNECTOR":
+                _, chunks = await connector_service.search_dexscreener(
+                    user_query=query,
+                    search_space_id=search_space_id,
+                    top_k=top_k,
+                    start_date=resolved_start_date,
+                    end_date=resolved_end_date,
+                )
+                print(f"[DEBUG] DexScreener search returned {len(chunks)} chunks")
+                if chunks:
+                    print(f"[DEBUG] First chunk metadata: {chunks[0].get('document', {}).get('metadata', {})}")
                 all_documents.extend(chunks)
 
             # =========================================================

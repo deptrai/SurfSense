@@ -17,12 +17,15 @@ depends_on = None
 
 
 def upgrade():
-    """Add DEXSCREENER_CONNECTOR to searchsourceconnectortype enum."""
+    """Add DEXSCREENER_CONNECTOR to searchsourceconnectortype and documenttype enums."""
     # Add new enum value using raw SQL
     # Note: ALTER TYPE ... ADD VALUE cannot be executed inside a transaction block
     # Alembic handles this automatically when using op.execute()
     op.execute(
         "ALTER TYPE searchsourceconnectortype ADD VALUE IF NOT EXISTS 'DEXSCREENER_CONNECTOR'"
+    )
+    op.execute(
+        "ALTER TYPE documenttype ADD VALUE IF NOT EXISTS 'DEXSCREENER_CONNECTOR'"
     )
 
 
