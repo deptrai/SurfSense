@@ -939,3 +939,322 @@ INFO:     127.0.0.1:54519 - "GET /api/v1/searchspaces?limit=10&skip=0&owned_only
 INFO:     127.0.0.1:54522 - "GET /api/v1/messages/27/comments HTTP/1.1" 200 OK
 INFO:     127.0.0.1:54525 - "GET /api/v1/messages/29/comments HTTP/1.1" 200 OK
 INFO:     127.0.0.1:54516 - "GET /api/v1/messages/31/comments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58489 - "OPTIONS /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58490 - "OPTIONS /api/v1/global-new-llm-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58489 - "OPTIONS /api/v1/search-source-connectors?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58493 - "OPTIONS /api/v1/search-spaces/2/llm-preferences HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58490 - "OPTIONS /api/v1/searchspaces?limit=10&skip=0&owned_only=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58494 - "OPTIONS /api/v1/searchspaces/2/my-access HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58493 - "OPTIONS /api/v1/searchspaces/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58489 - "OPTIONS /api/v1/threads?search_space_id=2&limit=40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58497 - "OPTIONS /api/v1/threads?search_space_id=2&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58490 - "OPTIONS /api/v1/searchspaces/2/members HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58494 - "OPTIONS /api/v1/new-llm-configs?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58498 - "OPTIONS /api/v1/documents/type-counts?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58497 - "OPTIONS /api/v1/messages/23/comments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58493 - "OPTIONS /api/v1/messages/25/comments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58489 - "OPTIONS /api/v1/messages/27/comments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58490 - "OPTIONS /api/v1/messages/29/comments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58498 - "OPTIONS /api/v1/messages/31/comments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58489 - "GET /api/v1/global-new-llm-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58494 - "GET /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58497 - "GET /api/v1/search-source-connectors?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58490 - "GET /api/v1/searchspaces?limit=10&skip=0&owned_only=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58494 - "GET /api/v1/searchspaces/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58489 - "GET /api/v1/threads?search_space_id=2&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58490 - "GET /api/v1/searchspaces/2/members HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58494 - "GET /api/v1/documents/type-counts?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58489 - "GET /api/v1/new-llm-configs?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58493 - "GET /api/v1/search-spaces/2/llm-preferences HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58490 - "GET /api/v1/messages/27/comments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58493 - "GET /api/v1/messages/29/comments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58489 - "GET /api/v1/messages/25/comments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58494 - "GET /api/v1/messages/23/comments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58498 - "GET /api/v1/searchspaces/2/my-access HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58497 - "GET /api/v1/threads?search_space_id=2&limit=40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:58490 - "GET /api/v1/messages/31/comments HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50485 - "GET /health HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50506 - "POST /api/auth/register HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50535 - "POST /api/auth/login HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50544 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50554 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50580 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50625 - "POST /connectors/dexscreener/add HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50643 - "POST /api/v1/connectors/dexscreener/add HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50655 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+INFO:     Application shutdown complete.
+INFO:     Finished server process [59799]
+/Users/mac_1/.local/share/uv/python/cpython-3.12.9-macos-aarch64-none/lib/python3.12/multiprocessing/resource_tracker.py:255: UserWarning: resource_tracker: There appear to be 1 leaked semaphore objects to clean up at shutdown
+  warnings.warn('resource_tracker: There appear to be %d '
+/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/chonkie/chunker/code.py:82: UserWarning: The language is set to `auto`. This would adversely affect the performance of the chunker. Consider setting the `language` parameter to a specific language to improve performance.
+  warnings.warn("The language is set to `auto`. This would adversely affect the performance of the chunker. " +
+INFO:     Will watch for changes in these directories: ['/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/app']
+INFO:     Started server process [75345]
+INFO:     Waiting for application startup.
+[92m17:02:04 - LiteLLM Router:INFO[0m: router.py:711 - Routing strategy: usage-based-routing
+2026-01-31 17:02:04 - LiteLLM Router - INFO - Routing strategy: usage-based-routing
+2026-01-31 17:02:04 - app.services.llm_router_service - INFO - LLM Router initialized with 4 deployments, strategy: usage-based-routing
+2026-01-31 17:02:04 - app.tasks.surfsense_docs_indexer - INFO - Starting Surfsense docs indexing...
+2026-01-31 17:02:04 - app.tasks.surfsense_docs_indexer - INFO - Found 24 MDX files to index
+2026-01-31 17:02:04 - app.tasks.surfsense_docs_indexer - INFO - Indexing complete: 0 created, 0 updated, 24 skipped, 0 deleted
+2026-01-31 17:02:04 - app.tasks.surfsense_docs_indexer - INFO - Surfsense docs indexing complete: created=0, updated=0, skipped=24, deleted=0
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+[Checkpointer] PostgreSQL checkpoint tables ready
+Info: LLM Router initialized with 4 models (strategy: usage-based-routing)
+INFO:     127.0.0.1:50750 - "GET /openapi.json HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50775 - "POST /api/v1/connectors/dexscreener/add HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:50777 - "GET /api/v1/connectors/dexscreener/test?chain=ethereum&address=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 HTTP/1.1" 401 Unauthorized
+2026-01-31 17:05:43 - app.users - INFO - User f34b4612-6556-47c8-bd37-c0e1fd6c9b30 has registered. Creating default search space...
+2026-01-31 17:05:43 - app.users - INFO - Created default search space (ID: 3) for user f34b4612-6556-47c8-bd37-c0e1fd6c9b30
+INFO:     127.0.0.1:50909 - "POST /auth/register HTTP/1.1" 201 Created
+INFO:     127.0.0.1:51070 - "POST /auth/jwt/login HTTP/1.1" 200 OK
+2026-01-31 17:08:45 - app.routes.dexscreener_add_connector_route - ERROR - Unexpected error adding DexScreener connector: (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.InvalidTextRepresentationError'>: invalid input value for enum searchsourceconnectortype: "DEXSCREENER_CONNECTOR"
+[SQL: SELECT search_source_connectors.name, search_source_connectors.connector_type, search_source_connectors.is_indexable, search_source_connectors.last_indexed_at, search_source_connectors.config, search_source_connectors.periodic_indexing_enabled, search_source_connectors.indexing_frequency_minutes, search_source_connectors.next_scheduled_at, search_source_connectors.search_space_id, search_source_connectors.user_id, search_source_connectors.id, search_source_connectors.created_at 
+FROM search_source_connectors 
+WHERE search_source_connectors.search_space_id = $1::INTEGER AND search_source_connectors.user_id = $2::UUID AND search_source_connectors.connector_type = $3::searchsourceconnectortype]
+[parameters: (1, UUID('f34b4612-6556-47c8-bd37-c0e1fd6c9b30'), 'DEXSCREENER_CONNECTOR')]
+(Background on this error at: https://sqlalche.me/e/20/dbapi)
+Traceback (most recent call last):
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 545, in _prepare_and_execute
+    self._rows = deque(await prepared_stmt.fetch(*parameters))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/asyncpg/prepared_stmt.py", line 176, in fetch
+    data = await self.__bind_execute(args, 0, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/asyncpg/prepared_stmt.py", line 267, in __bind_execute
+    data, status, _ = await self.__do_execute(
+                      ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/asyncpg/prepared_stmt.py", line 256, in __do_execute
+    return await executor(protocol)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "asyncpg/protocol/protocol.pyx", line 206, in bind_execute
+asyncpg.exceptions.InvalidTextRepresentationError: invalid input value for enum searchsourceconnectortype: "DEXSCREENER_CONNECTOR"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 580, in execute
+    self._adapt_connection.await_(
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 558, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 508, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 792, in _handle_exception
+    raise translated_error from error
+sqlalchemy.dialects.postgresql.asyncpg.AsyncAdapt_asyncpg_dbapi.Error: <class 'asyncpg.exceptions.InvalidTextRepresentationError'>: invalid input value for enum searchsourceconnectortype: "DEXSCREENER_CONNECTOR"
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/app/routes/dexscreener_add_connector_route.py", line 79, in add_dexscreener_connector
+    result = await session.execute(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/session.py", line 463, in execute
+    result = await greenlet_spawn(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 201, in greenlet_spawn
+    result = context.throw(*sys.exc_info())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2365, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2251, in _execute_internal
+    result: Result[Any] = compile_state_cls.orm_execute_statement(
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 306, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1415, in execute
+    return meth(
+           ^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 523, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1637, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1842, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1982, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1963, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 943, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 580, in execute
+    self._adapt_connection.await_(
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+    return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+    value = await result
+            ^^^^^^^^^^^^
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 558, in _prepare_and_execute
+    self._handle_exception(error)
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 508, in _handle_exception
+    self._adapt_connection._handle_exception(error)
+  File "/Users/mac_1/Documents/GitHub/SurfSense/surfsense_backend/.venv/lib/python3.12/site-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 792, in _handle_exception
+    raise translated_error from error
+sqlalchemy.exc.DBAPIError: (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.InvalidTextRepresentationError'>: invalid input value for enum searchsourceconnectortype: "DEXSCREENER_CONNECTOR"
+[SQL: SELECT search_source_connectors.name, search_source_connectors.connector_type, search_source_connectors.is_indexable, search_source_connectors.last_indexed_at, search_source_connectors.config, search_source_connectors.periodic_indexing_enabled, search_source_connectors.indexing_frequency_minutes, search_source_connectors.next_scheduled_at, search_source_connectors.search_space_id, search_source_connectors.user_id, search_source_connectors.id, search_source_connectors.created_at 
+FROM search_source_connectors 
+WHERE search_source_connectors.search_space_id = $1::INTEGER AND search_source_connectors.user_id = $2::UUID AND search_source_connectors.connector_type = $3::searchsourceconnectortype]
+[parameters: (1, UUID('f34b4612-6556-47c8-bd37-c0e1fd6c9b30'), 'DEXSCREENER_CONNECTOR')]
+(Background on this error at: https://sqlalche.me/e/20/dbapi)
+INFO:     127.0.0.1:51071 - "POST /api/v1/connectors/dexscreener/add HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:51072 - "GET /api/v1/connectors/dexscreener HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:51073 - "GET /api/v1/connectors/dexscreener/test?chain=ethereum&address=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:51170 - "POST /auth/jwt/login HTTP/1.1" 200 OK
+2026-01-31 17:10:00 - app.routes.dexscreener_add_connector_route - INFO - Successfully created DexScreener connector for user f34b4612-6556-47c8-bd37-c0e1fd6c9b30 with ID 3
+INFO:     127.0.0.1:51171 - "POST /api/v1/connectors/dexscreener/add HTTP/1.1" 200 OK
+INFO:     127.0.0.1:51172 - "GET /api/v1/connectors/dexscreener HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:51173 - "GET /api/v1/connectors/dexscreener/test?chain=ethereum&address=0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 HTTP/1.1" 422 Unprocessable Entity
+INFO:     127.0.0.1:51257 - "POST /auth/jwt/login HTTP/1.1" 200 OK
+2026-01-31 17:10:42 - app.routes.dexscreener_add_connector_route - INFO - Updated existing DexScreener connector for user f34b4612-6556-47c8-bd37-c0e1fd6c9b30 in space 1
+INFO:     127.0.0.1:51258 - "POST /api/v1/connectors/dexscreener/add HTTP/1.1" 200 OK
+2026-01-31 17:10:43 - app.connectors.dexscreener_connector - INFO - Token not found: tokens/ethereum/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+INFO:     127.0.0.1:51259 - "GET /api/v1/connectors/dexscreener/test?space_id=1 HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:52249 - "POST /auth/jwt/login HTTP/1.1" 200 OK
+2026-01-31 17:23:19 - app.routes.dexscreener_add_connector_route - INFO - Updated existing DexScreener connector for user f34b4612-6556-47c8-bd37-c0e1fd6c9b30 in space 1
+INFO:     127.0.0.1:52250 - "POST /api/v1/connectors/dexscreener/add HTTP/1.1" 200 OK
+2026-01-31 17:23:19 - app.connectors.dexscreener_connector - INFO - Token not found: tokens/ethereum/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2
+INFO:     127.0.0.1:52251 - "GET /api/v1/connectors/dexscreener/test?space_id=1 HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:52255 - "GET /api/v1/connectors/dexscreener/test?space_id=1 HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:52260 - "POST /api/v1/connectors/dexscreener/add HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:52262 - "DELETE /api/v1/connectors/dexscreener?space_id=1 HTTP/1.1" 401 Unauthorized
+INFO:     127.0.0.1:53087 - "OPTIONS /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53090 - "OPTIONS /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53087 - "GET /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53087 - "GET /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53117 - "OPTIONS /api/v1/searchspaces?limit=10&skip=0&owned_only=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53115 - "GET /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53115 - "GET /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53117 - "GET /api/v1/searchspaces?limit=10&skip=0&owned_only=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53125 - "OPTIONS /api/v1/global-new-llm-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53127 - "OPTIONS /api/v1/search-spaces/2/llm-preferences HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53129 - "OPTIONS /api/v1/searchspaces/2/my-access HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53129 - "GET /api/v1/global-new-llm-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53127 - "GET /api/v1/search-spaces/2/llm-preferences HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53125 - "GET /api/v1/searchspaces/2/my-access HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53125 - "OPTIONS /api/v1/threads?search_space_id=2&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53127 - "OPTIONS /api/v1/documents/type-counts?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53125 - "OPTIONS /api/v1/search-source-connectors?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53133 - "OPTIONS /api/v1/searchspaces/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53135 - "OPTIONS /api/v1/searchspaces/2/members HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53133 - "OPTIONS /api/v1/notifications/unread-count?search_space_id=2&type=new_mention HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53137 - "OPTIONS /api/v1/threads?search_space_id=2&limit=40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53135 - "OPTIONS /api/v1/notifications/unread-count?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53125 - "GET /api/v1/search-source-connectors?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53127 - "GET /api/v1/documents/type-counts?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53125 - "GET /api/v1/notifications/unread-count?search_space_id=2&type=new_mention HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53125 - "OPTIONS /api/v1/new-llm-configs?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53125 - "OPTIONS /api/v1/notifications/unread-count?search_space_id=2&type=connector_indexing HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53125 - "OPTIONS /api/v1/notifications?search_space_id=2&type=new_mention&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53125 - "OPTIONS /api/v1/notifications?search_space_id=2&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53125 - "OPTIONS /api/v1/notifications?search_space_id=2&type=connector_indexing&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53129 - "GET /api/v1/threads?search_space_id=2&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53127 - "GET /api/v1/notifications/unread-count?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53135 - "GET /api/v1/threads?search_space_id=2&limit=40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53125 - "GET /api/v1/new-llm-configs?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53133 - "GET /api/v1/searchspaces/2/members HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53129 - "GET /api/v1/notifications/unread-count?search_space_id=2&type=connector_indexing HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53137 - "GET /api/v1/searchspaces/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53127 - "GET /api/v1/notifications?search_space_id=2&type=new_mention&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53135 - "GET /api/v1/notifications?search_space_id=2&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53125 - "GET /api/v1/notifications?search_space_id=2&type=connector_indexing&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53316 - "OPTIONS /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53318 - "OPTIONS /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53320 - "OPTIONS /api/v1/searchspaces?limit=10&skip=0&owned_only=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53320 - "GET /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53320 - "GET /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53318 - "GET /api/v1/searchspaces?limit=10&skip=0&owned_only=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53318 - "OPTIONS /api/v1/global-new-llm-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53320 - "OPTIONS /api/v1/search-spaces/2/llm-preferences HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53320 - "OPTIONS /api/v1/searchspaces/2/my-access HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53318 - "GET /api/v1/global-new-llm-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53316 - "GET /api/v1/search-spaces/2/llm-preferences HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53320 - "GET /api/v1/searchspaces/2/my-access HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53328 - "OPTIONS /api/v1/threads?search_space_id=2&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53329 - "OPTIONS /api/v1/documents/type-counts?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53332 - "OPTIONS /api/v1/search-source-connectors?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53334 - "OPTIONS /api/v1/searchspaces/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53335 - "OPTIONS /api/v1/searchspaces/2/members HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53332 - "OPTIONS /api/v1/threads?search_space_id=2&limit=40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53334 - "GET /api/v1/searchspaces/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53334 - "OPTIONS /api/v1/new-llm-configs?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53337 - "GET /api/v1/searchspaces/2/members HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53335 - "GET /api/v1/search-source-connectors?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53328 - "GET /api/v1/documents/type-counts?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53329 - "GET /api/v1/threads?search_space_id=2&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53334 - "GET /api/v1/new-llm-configs?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53332 - "GET /api/v1/threads?search_space_id=2&limit=40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53332 - "OPTIONS /api/v1/notifications/unread-count?search_space_id=2&type=connector_indexing HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53334 - "OPTIONS /api/v1/notifications/unread-count?search_space_id=2&type=new_mention HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53329 - "OPTIONS /api/v1/notifications/unread-count?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53328 - "OPTIONS /api/v1/notifications?search_space_id=2&type=connector_indexing&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53335 - "OPTIONS /api/v1/notifications?search_space_id=2&type=new_mention&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53337 - "OPTIONS /api/v1/notifications?search_space_id=2&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53332 - "GET /api/v1/notifications/unread-count?search_space_id=2&type=connector_indexing HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53329 - "GET /api/v1/notifications/unread-count?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53334 - "GET /api/v1/notifications/unread-count?search_space_id=2&type=new_mention HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53335 - "GET /api/v1/notifications?search_space_id=2&type=new_mention&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53337 - "GET /api/v1/notifications?search_space_id=2&type=connector_indexing&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53328 - "GET /api/v1/notifications?search_space_id=2&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53382 - "GET /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53384 - "GET /api/v1/global-new-llm-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53382 - "GET /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53386 - "GET /api/v1/search-spaces/2/llm-preferences HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53388 - "GET /api/v1/searchspaces/2/my-access HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53384 - "GET /api/v1/searchspaces/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53382 - "GET /api/v1/search-source-connectors?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53391 - "GET /api/v1/searchspaces/2/members HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53388 - "GET /api/v1/threads?search_space_id=2&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53386 - "GET /api/v1/documents/type-counts?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53382 - "GET /api/v1/new-llm-configs?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53384 - "GET /api/v1/threads?search_space_id=2&limit=40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53393 - "GET /api/v1/searchspaces?limit=10&skip=0&owned_only=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53397 - "GET /api/v1/notifications/unread-count?search_space_id=2&type=connector_indexing HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53399 - "GET /api/v1/notifications/unread-count?search_space_id=2&type=new_mention HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53403 - "GET /api/v1/notifications?search_space_id=2&type=connector_indexing&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53401 - "GET /api/v1/notifications/unread-count?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53405 - "GET /api/v1/notifications?search_space_id=2&type=new_mention&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53407 - "GET /api/v1/notifications?search_space_id=2&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53418 - "GET /api/v1/searchspaces/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53421 - "GET /api/v1/notifications/unread-count?search_space_id=2&type=connector_indexing HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53424 - "GET /api/v1/notifications?search_space_id=2&type=connector_indexing&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53419 - "GET /api/v1/searchspaces/2/members HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53529 - "GET /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53529 - "GET /users/me HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53531 - "GET /api/v1/searchspaces?limit=10&skip=0&owned_only=false HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53531 - "GET /api/v1/global-new-llm-configs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53529 - "GET /api/v1/search-spaces/2/llm-preferences HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53538 - "GET /api/v1/searchspaces/2/my-access HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53540 - "GET /api/v1/searchspaces/2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53538 - "GET /api/v1/threads?search_space_id=2&limit=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53542 - "GET /api/v1/searchspaces/2/members HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53529 - "GET /api/v1/documents/type-counts?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53531 - "GET /api/v1/search-source-connectors?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53542 - "GET /api/v1/new-llm-configs?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53544 - "GET /api/v1/threads?search_space_id=2&limit=40 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53544 - "GET /api/v1/notifications/unread-count?search_space_id=2&type=connector_indexing HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53542 - "GET /api/v1/notifications/unread-count?search_space_id=2&type=new_mention HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53538 - "GET /api/v1/notifications?search_space_id=2&type=new_mention&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53529 - "GET /api/v1/notifications?search_space_id=2&type=connector_indexing&limit=50 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53531 - "GET /api/v1/notifications/unread-count?search_space_id=2 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:53540 - "GET /api/v1/notifications?search_space_id=2&limit=50 HTTP/1.1" 200 OK

@@ -31,7 +31,21 @@ Tài liệu này hướng dẫn administrators cách quản lý và vận hành 
 
 ---
 
+---
+
+## 🔑 Default Admin Account
+
+**Tài khoản quản trị mặc định:**
+- **Email:** `admin@surfsense.ai`
+- **Password:** `password123`
+
+> [!WARNING]
+> **Bảo mật quan trọng:** Đổi mật khẩu ngay sau khi đăng nhập lần đầu!
+
+---
+
 ## 👥 Quản Lý Users
+
 
 ### Tạo User Mới
 
