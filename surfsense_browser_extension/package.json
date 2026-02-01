@@ -67,6 +67,7 @@
 		"storage",
 		"scripting",
 		"unlimitedStorage",
-		"activeTab"
+		"activeTab",
+		"sidePanel"
 	]
 }

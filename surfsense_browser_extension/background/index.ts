@@ -2,6 +2,11 @@ import { Storage } from "@plasmohq/storage";
 import { getRenderedHtml, initQueues, initWebHistory } from "~utils/commons";
 import type { WebHistory } from "~utils/interfaces";
 
+// Configure side panel to open when extension icon is clicked
+chrome.sidePanel
+	.setPanelBehavior({ openPanelOnActionClick: true })
+	.catch((error) => console.error("Failed to set side panel behavior:", error));
+
 chrome.tabs.onCreated.addListener(async (tab: any) => {
 	try {
 		await initWebHistory(tab.id);
