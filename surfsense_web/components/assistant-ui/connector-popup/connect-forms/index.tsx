@@ -2,6 +2,7 @@ import type { FC } from "react";
 import { BaiduSearchApiConnectForm } from "./components/baidu-search-api-connect-form";
 import { BookStackConnectForm } from "./components/bookstack-connect-form";
 import { CirclebackConnectForm } from "./components/circleback-connect-form";
+import { DexScreenerConnectForm } from "./components/dexscreener-connect-form";
 import { ElasticsearchConnectForm } from "./components/elasticsearch-connect-form";
 import { GithubConnectForm } from "./components/github-connect-form";
 import { LinkupApiConnectForm } from "./components/linkup-api-connect-form";
@@ -57,6 +58,8 @@ export function getConnectFormComponent(connectorType: string): ConnectFormCompo
 			return LumaConnectForm;
 		case "CIRCLEBACK_CONNECTOR":
 			return CirclebackConnectForm;
+		case "DEXSCREENER_CONNECTOR":
+			return DexScreenerConnectForm;
 		case "MCP_CONNECTOR":
 			return MCPConnectForm;
 		case "OBSIDIAN_CONNECTOR":

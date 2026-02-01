@@ -10,6 +10,7 @@ import { ComposioCalendarConfig } from "./components/composio-calendar-config";
 import { ComposioDriveConfig } from "./components/composio-drive-config";
 import { ComposioGmailConfig } from "./components/composio-gmail-config";
 import { ConfluenceConfig } from "./components/confluence-config";
+import { DexScreenerConfig } from "./components/dexscreener-config";
 import { DiscordConfig } from "./components/discord-config";
 import { ElasticsearchConfig } from "./components/elasticsearch-config";
 import { GithubConfig } from "./components/github-config";
@@ -75,6 +76,8 @@ export function getConnectorConfigComponent(
 			return LumaConfig;
 		case "CIRCLEBACK_CONNECTOR":
 			return CirclebackConfig;
+		case "DEXSCREENER_CONNECTOR":
+			return DexScreenerConfig;
 		case "MCP_CONNECTOR":
 			return MCPConfig;
 		case "OBSIDIAN_CONNECTOR":

@@ -56,6 +56,7 @@ export const ConnectorConnectView: FC<ConnectorConnectViewProps> = ({
 			BOOKSTACK_CONNECTOR: "bookstack-connect-form",
 			GITHUB_CONNECTOR: "github-connect-form",
 			LUMA_CONNECTOR: "luma-connect-form",
+			DEXSCREENER_CONNECTOR: "dexscreener-connect-form",
 			CIRCLEBACK_CONNECTOR: "circleback-connect-form",
 			MCP_CONNECTOR: "mcp-connect-form",
 			OBSIDIAN_CONNECTOR: "obsidian-connect-form",
