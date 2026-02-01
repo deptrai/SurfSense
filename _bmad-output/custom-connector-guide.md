@@ -796,6 +796,76 @@ async def index_connector_data(connector: SearchSourceConnector):
     # ... other connector types
 ```
 
+---
+
+## ⚠️ CRITICAL: Enable RAG Retrieval
+
+**This is the most commonly missed step when adding new connectors!**
+
+### The Problem
+
+Even if your connector successfully:
+1. ✅ Stores data in the database
+2. ✅ Indexes data into vector store
+3. ✅ Shows up in the UI
+
+The LLM **WILL NOT** be able to retrieve this data unless you add the connector to the RAG mapping.
+
+### The Fix
+
+**File:** `surfsense_backend/app/agents/new_chat/chat_deepagent.py`
+
+**Add your connector to `_CONNECTOR_TYPE_TO_SEARCHABLE`:**
+
+```python
+_CONNECTOR_TYPE_TO_SEARCHABLE = {
+    "GMAIL": "GMAIL",
+    "GOOGLE_DRIVE_CONNECTOR": "GOOGLE_DRIVE",
+    "SLACK_CONNECTOR": "SLACK",
+    "NOTION_CONNECTOR": "NOTION",
+    # ... other connectors ...
+    
+    # ✅ ADD YOUR NEW CONNECTOR HERE
+    "DEXSCREENER_CONNECTOR": "DEXSCREENER_CONNECTOR",
+    "YOUR_CONNECTOR": "YOUR_CONNECTOR",  # Example
+}
+```
+
+### Why This Matters
+
+This mapping is used by `_map_connectors_to_searchable_types()` to:
+1. Build the list of available search spaces for the LLM
+2. Include connector types in the tool description
+3. Enable the LLM to search your connector's data
+
+**Without this mapping:**
+- LLM won't know your connector exists
+- LLM can't search your indexed data
+- Users will get "I don't have access to that data" responses
+
+### Verification
+
+After adding the mapping, test with a user query:
+
+```bash
+# Example for DexScreener
+curl -X POST http://localhost:8000/api/chat \
+  -H "Authorization: Bearer $TOKEN" \
+  -d '{
+    "message": "What is the current price of WETH?",
+    "space_id": 7
+  }'
+```
+
+**Expected:** LLM retrieves data and provides answer with citations.
+
+**If failed:** Check that:
+1. Connector is in `_CONNECTOR_TYPE_TO_SEARCHABLE`
+2. Connector type matches exactly (case-sensitive)
+3. Data is indexed in the correct `search_space_id`
+
+---
+
 ## Best Practices
 
 ### 1. **Error Handling**

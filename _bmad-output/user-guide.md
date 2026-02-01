@@ -195,6 +195,11 @@ SurfSense cho phép bạn kết nối với **26+ ứng dụng bên ngoài** nh�
 - **Kết nối Google Drive:** Tìm files và documents ngay trong SurfSense
 - **Kết nối Slack:** Tìm conversations và shared files từ workspace
 - **Kết nối Notion:** Tìm kiếm trong pages và databases
+- **Kết nối DexScreener:** Theo dõi giá crypto tokens real-time
+  - Không cần API key
+  - Chỉ cần nhập token addresses muốn theo dõi
+  - AI có thể trả lời: *"What's the current price of WETH?"*
+  - Xem trading pairs, liquidity, volume, price changes
 
 **Quản lý Connectors:**
 

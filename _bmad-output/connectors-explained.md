@@ -18,8 +18,9 @@
 - 🎫 **Jira** - Tìm kiếm tickets
 - 📚 **Confluence** - Tìm kiếm wiki pages
 - 🗂️ **Microsoft Teams** - Tìm kiếm chats và files
+- 💰 **DexScreener** - Theo dõi giá token crypto và trading pairs
 
-**Tổng cộng:** SurfSense hỗ trợ **26+ connectors** khác nhau!
+**Tổng cộng:** SurfSense hỗ trợ **27+ connectors** khác nhau!
 
 ---
 
@@ -238,6 +239,30 @@ User → SurfSense → Notion OAuth → Access Token → SurfSense
 - Chỉ hoạt động khi SurfSense chạy self-hosted
 - Truy cập trực tiếp vào local file system
 
+### 5. API-Based (No Authentication)
+
+**Ví dụ:** DexScreener Connector
+
+- Không cần OAuth hay API key (public API)
+- User chỉ cần cấu hình tokens muốn theo dõi
+- Ưu điểm:
+  - Setup cực kỳ đơn giản (không cần đăng ký API key)
+  - Miễn phí hoàn toàn
+  - Real-time data từ public blockchain
+- Nhược điểm:
+  - Bị giới hạn rate limit của public API
+  - Không có personalized data
+
+**Flow:**
+```
+User → Nhập token addresses → SurfSense → DexScreener Public API → Token Price Data
+```
+
+**Use Case:**
+- Theo dõi giá crypto tokens (WETH, USDC, etc.)
+- Phân tích trading pairs trên các DEX
+- AI có thể trả lời: *"What's the current price of WETH?"*
+
 ---
 
 ## 🛠️ Cấu Hình Connector
@@ -275,6 +300,24 @@ Mỗi connector có các settings:
   "channels": ["general", "engineering"],  // Chỉ index các channels này
   "include_dms": true,  // Index direct messages
   "date_range_days": 90  // Chỉ index 90 ngày gần nhất
+}
+```
+
+**DexScreener:**
+```json
+{
+  "tokens": [
+    {
+      "chain": "ethereum",
+      "address": "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+      "name": "WETH"
+    },
+    {
+      "chain": "bsc", 
+      "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+      "name": "WBNB"
+    }
+  ]
 }
 ```
 
@@ -319,6 +362,23 @@ Mỗi connector có các settings:
 2. Jira ticket: PROD-456
 3. Slack discussion về issue
 4. Confluence: Payment API Architecture
+
+### 3. Crypto Trader
+
+**Scenario:** Theo dõi giá token và phân tích market trends.
+
+**Connectors kết nối:**
+- DexScreener (token prices và trading pairs)
+- Twitter/X (crypto news - nếu có connector)
+- Notion (trading notes)
+
+**Search query trong AI Chat:** *"What's the current price of WETH and how has it changed in the last 24 hours?"*
+
+**Kết quả:**
+- AI trả lời với real-time price data từ DexScreener
+- Hiển thị price changes (5m, 1h, 24h)
+- Liquidity và volume information
+- Citations link đến DexScreener pairs
 
 ---
 
