@@ -1,57 +1,159 @@
-# Epic 2: Smart Monitoring & Alerts
+# Epic 2: Smart Monitoring & Alerts (Giám sát & Cảnh báo Thông minh)
 
-**Status:** 📋 PLANNED  
-**Phase:** Phase 2  
-**Duration:** 2 weeks  
-**Priority:** P0 (Critical - Risk Protection)
+**Trạng thái:** 📋 ĐÃ LÊN KẾ HOẠCH (PLANNED)  
+**Giai đoạn:** Phase 2  
+**Thời gian:** 2 tuần  
+**Mức độ ưu tiên:** P0 (Nghiêm trọng - Risk Protection)
 
 ---
 
-## Epic Overview
+## Tổng quan Epic
 
 Xây dựng hệ thống monitoring và alerts thông minh để bảo vệ users khỏi rủi ro và giúp họ không bỏ lỡ cơ hội. Tập trung vào **risk protection** (rug pull detection) và **opportunity alerts** (whale activity, price movements).
 
-**Business Value:**
-- **Risk Protection:** Giúp users tránh mất tiền vào rug pulls
-- **Opportunity Alerts:** Không bỏ lỡ whale movements và price spikes
-- **Always-On Monitoring:** Background monitoring ngay cả khi browser đóng
-- **Competitive Advantage:** Proactive alerts vs passive dashboards (DexScreener/DexTools)
+**Giá trị kinh doanh (Business Value):**
+- **Risk Protection (Bảo vệ rủi ro):** Giúp users tránh mất tiền vào rug pulls.
+- **Opportunity Alerts (Cảnh báo cơ hội):** Không bỏ lỡ whale movements và price spikes.
+- **Always-On Monitoring:** Giám sát ngầm (Background monitoring) ngay cả khi browser đóng.
+- **Lợi thế cạnh tranh:** Proactive alerts (Chủ động cảnh báo) so với passive dashboards (DexScreener/DexTools).
 
-**Key Differentiator:** AI-driven anomaly detection, không chỉ là threshold alerts.
+**Điểm khác biệt chính:** AI-driven anomaly detection (Phát hiện bất thường bằng AI), không chỉ là threshold alerts.
 
 ---
 
 ## User Stories
 
-### Story 2.1: Real-time Price Alerts
+### Story 2.1: Cảnh báo Giá Thời gian thực (Real-time Price Alerts)
 **[FR-EXT-07]**
 
 **Là một** crypto trader,  
-**Tôi muốn** set price alerts cho tokens trong watchlist,  
-**Để** tôi được notify khi price hit target mà không cần stare vào chart cả ngày.
+**Tôi muốn** đặt cảnh báo giá cho tokens trong watchlist,  
+**Để** tôi được thông báo (notify) khi giá chạm target mà không cần nhìn chằm chằm vào biểu đồ cả ngày.
 
-**Acceptance Criteria:**
-- [ ] Watchlist management trong side panel
-  - Add token to watchlist (from DexScreener page)
-  - Remove token from watchlist
-  - View all watchlist tokens
-  - Edit token alerts
-- [ ] Alert types:
-  - Price above threshold (e.g., > $0.001)
-  - Price below threshold (e.g., < $0.0005)
-  - Price change % (e.g., +20% in 1h)
-  - Volume spike (e.g., 3x average volume)
-  - Liquidity change (e.g., -50% liquidity)
-- [ ] Browser notifications:
-  - Work even when tab closed
-  - Show token symbol, price, change %
-  - Click notification → Open DexScreener page
-- [ ] Sound alerts (optional):
-  - Enable/disable per alert
-  - Different sounds for different alert types
-- [ ] Alert history:
-  - View past alerts
-  - Mark as read/unread
+**Tiêu chí chấp nhận (Acceptance Criteria - BDD Format):**
+
+#### AC 2.1.1: Quản lý Watchlist
+**Given** user đang xem token trên DexScreener  
+**When** user click nút "Add to Watchlist" trong Token Info Card  
+**Then** token được thêm vào watchlist  
+**And** watchlist badge hiển thị "5 tokens"  
+**And** toast notification "Added BULLA/SOL to watchlist"
+
+**Remove from Watchlist:**  
+**Given** token đang trong watchlist  
+**When** user click nút "Remove"  
+**Then** confirmation modal xuất hiện "Remove BULLA/SOL from watchlist?"  
+**And** user xác nhận (confirms)  
+**Then** token bị xóa khỏi watchlist  
+**And** tất cả alerts liên quan bị xóa
+
+**View Watchlist:**  
+**Given** user có 5 tokens trong watchlist  
+**When** user mở Watchlist panel  
+**Then** tất cả 5 tokens hiển thị với:
+- Token symbol và chain
+- Giá hiện tại (Current price)
+- Thay đổi 24h (24h change %)
+- Số lượng active alerts
+- Nút [Edit] [Remove]
+
+---
+
+#### AC 2.1.2: Cấu hình Loại Alert
+**Given** user có token trong watchlist  
+**When** user click nút "Add Alert"  
+**Then** modal cấu hình alert mở ra với các tùy chọn:
+
+**Price Above Threshold (Giá trên ngưỡng):**  
+**Given** user chọn "Price Above"  
+**When** user nhập ngưỡng "$0.00015"  
+**Then** alert được tạo  
+**And** background worker kiểm tra giá mỗi 1 phút  
+**When** giá vượt quá $0.00015  
+**Then** browser notification hiển thị "🚀 BULLA/SOL hit $0.00016 (+6.7%)"
+
+**Price Below Threshold (Giá dưới ngưỡng):**  
+**Given** user chọn "Price Below"  
+**When** user nhập ngưỡng "$0.0005"  
+**Then** alert kích hoạt khi giá giảm xuống dưới ngưỡng
+
+**Price Change % (Biến động giá %):**  
+**Given** user chọn "Price Change %"  
+**When** user nhập "+20% in 1h"  
+**Then** alert kích hoạt khi giá tăng 20% trong vòng 1 giờ
+
+**Volume Spike (Khối lượng tăng đột biến):**  
+**Given** user chọn "Volume Spike"  
+**When** user nhập "3x average volume"  
+**Then** alert kích hoạt khi volume vượt quá 3 lần trung bình 24h
+
+**Liquidity Change (Thay đổi thanh khoản):**  
+**Given** user chọn "Liquidity Change"  
+**When** user nhập "-50% liquidity"  
+**Then** alert kích hoạt khi thanh khoản giảm 50% so với baseline
+
+---
+
+#### AC 2.1.3: Browser Notifications
+**Given** user có active price alert  
+**When** điều kiện alert được đáp ứng  
+**Then** browser notification xuất hiện với:
+- Token symbol: "BULLA/SOL"
+- Current price: "$0.00016"
+- Change %: "+6.7%"
+- Alert type: "Price Above $0.00015"
+
+**Hoạt động khi đóng Tab:**  
+**Given** user đã đóng tất cả browser tabs  
+**When** alert kích hoạt  
+**Then** notification vẫn xuất hiện (nhờ background service worker)
+
+**Click Notification:**  
+**Given** user nhận thông báo  
+**When** user click vào thông báo  
+**Then** tab mới mở ra với trang DexScreener cho token đó  
+**And** side panel tự động mở với token context
+
+---
+
+#### AC 2.1.4: Cảnh báo Âm thanh (Sound Alerts)
+**Given** user bật sound alerts  
+**When** alert kích hoạt  
+**Then** âm thanh phát ra dựa trên loại alert:
+- Price Above: "ding.mp3" (âm thanh tích cực)
+- Price Below: "alert.mp3" (âm thanh cảnh báo)
+- Volume Spike: "chime.mp3" (âm thanh chú ý)
+
+**Enable/Disable Per Alert:**  
+**Given** user có nhiều alerts  
+**When** user bật tắt âm thanh cho một alert cụ thể  
+**Then** chỉ alert đó mới phát âm thanh  
+**And** các alerts khác vẫn im lặng
+
+---
+
+#### AC 2.1.5: Lịch sử Alert (Alert History)
+**Given** user có alerts đã kích hoạt  
+**When** user mở panel "Alert History"  
+**Then** danh sách hiển thị 100 alerts gần nhất với:
+- Thời gian: "2 hours ago"
+- Token: "BULLA/SOL"
+- Alert type: "Price Above $0.00015"
+- Triggered price: "$0.00016"
+- Trạng thái Read/Unread
+
+**Mark as Read:**  
+**Given** alert chưa đọc (unread)  
+**When** user click vào alert  
+**Then** alert được đánh dấu là đã đọc  
+**And** số lượng badge unread giảm đi
+
+**Filter History:**  
+**Given** user có 100+ alerts  
+**When** user filter theo token "BULLA/SOL"  
+**Then** chỉ hiển thị alerts của BULLA  
+**When** user filter theo loại "Price Above"  
+**Then** chỉ hiển thị alerts giá trên ngưỡng
 
 **UI Design:**
 ```
@@ -70,7 +172,7 @@ Xây dựng hệ thống monitoring và alerts thông minh để bảo vệ user
 └─────────────────────────────┘
 ```
 
-**Technical Implementation:**
+**Triển khai kỹ thuật:**
 ```typescript
 interface PriceAlert {
   id: string;
@@ -108,35 +210,119 @@ GET /api/alerts/check  // Returns triggered alerts
 
 ---
 
-### Story 2.2: Whale Activity Tracker
+### Story 2.2: Theo dõi Hoạt động Cá voi (Whale Activity Tracker)
 **[FR-EXT-08]**
 
 **Là một** crypto trader,  
-**Tôi muốn** được notify khi có whale buy/sell lớn,  
-**Để** tôi có thể follow smart money và tránh bị dumped.
+**Tôi muốn** được thông báo khi có giao dịch mua/bán lớn (whale buy/sell),  
+**Để** tôi có thể theo chân dòng tiền thông minh (smart money) và tránh bị xả hàng (dumped).
 
-**Acceptance Criteria:**
-- [ ] Monitor large transactions:
-  - Configurable thresholds: $10K, $50K, $100K
-  - Detect buy vs sell
-  - Show transaction size in USD
-- [ ] Wallet clustering detection:
-  - Identify same entity (multiple wallets)
-  - Show total holdings across wallets
-- [ ] Smart money tracking:
-  - Track specific wallet addresses
-  - Alert on their activities
-  - Show their historical performance
-- [ ] Transaction details:
-  - Wallet address
-  - Transaction hash
-  - Amount (tokens + USD)
-  - Time
-  - Link to explorer
-- [ ] Notification:
-  - Browser notification for whale activity
-  - Show in side panel feed
-  - Filter by token (only watchlist or all)
+**Tiêu chí chấp nhận (Acceptance Criteria - BDD Format):**
+
+#### AC 2.2.1: Giám sát Giao dịch Lớn
+**Given** user có token trong watchlist  
+**When** phát hiện giao dịch cá voi (whale transaction) (>$10K)  
+**Then** thông báo xuất hiện "🐋 $100K BUY detected for BULLA/SOL"  
+**And** chi tiết giao dịch hiển thị:
+- Loại: BUY hoặc SELL
+- Số lượng: "1B tokens ($100,000)"
+- Ví: "0x1234...5678"
+- Thời gian: "2 min ago"
+
+**Configurable Thresholds (Ngưỡng có thể cấu hình):**  
+**Given** user mở cài đặt whale  
+**When** user chọn ngưỡng "$50K"  
+**Then** chỉ các giao dịch >$50K mới kích hoạt alerts  
+**And** các giao dịch nhỏ hơn bị bỏ qua
+
+**Phát hiện Mua vs Bán:**  
+**Given** whale bán lượng token trị giá $100K  
+**When** giao dịch được phát hiện  
+**Then** thông báo hiển thị "🔴 SELL $100K BULLA/SOL"  
+**And** màu đỏ chỉ thị áp lực bán
+
+---
+
+#### AC 2.2.2: Phát hiện Gom nhóm Ví (Wallet Clustering Detection)
+**Given** cùng một thực thể kiểm soát nhiều ví  
+**When** hệ thống phát hiện các ví liên quan  
+**Then** các ví được nhóm lại với nhau  
+**And** hiển thị tổng holdings trên tất cả các ví
+
+**Ví dụ:**  
+**Given** ví A và B thuộc cùng một thực thể  
+**When** ví A mua 500M tokens  
+**And** ví B mua 300M tokens  
+**Then** hệ thống hiển thị "Entity holds 800M tokens across 2 wallets"
+
+---
+
+#### AC 2.2.3: Theo dõi Smart Money
+**Given** user xác định được ví có lợi nhuận cao  
+**When** user click "Track This Wallet"  
+**Then** ví được thêm vào danh sách smart money  
+**And** tất cả giao dịch tương lai từ ví này sẽ kích hoạt alerts
+
+**Hiệu suất Lịch sử:**  
+**Given** ví đang được theo dõi là smart money  
+**When** user xem chi tiết ví  
+**Then** hệ thống hiển thị:
+- Tổng số giao dịch: 50
+- Tỷ lệ thắng (Win rate): 75%
+- Lợi nhuận trung bình: +120%
+- Các giao dịch gần đây (10 giao dịch cuối)
+
+**Cảnh báo Hoạt động:**  
+**Given** ví smart money thực hiện giao dịch  
+**When** giao dịch được phát hiện  
+**Then** thông báo ưu tiên "⚠️ Smart Money Alert: Wallet 0x1234 bought $50K PEPE"  
+**And** thông báo có mức ưu tiên cao hơn whale alerts thông thường
+
+---
+
+#### AC 2.2.4: Chi tiết Giao dịch
+**Given** phát hiện giao dịch cá voi  
+**When** user click vào thông báo  
+**Then** modal chi tiết mở ra với:
+- Địa chỉ ví: "0x1234...5678" (có thể copy)
+- Transaction hash: "0xabcd...ef01" (có thể copy)
+- Số lượng: "1B tokens ($100,000)"
+- Thời gian: "2 min ago (14:30:15 UTC)"
+- Link tới block explorer
+- Nút [Track This Wallet]
+
+**Link tới Explorer:**  
+**Given** user click "View on Explorer"  
+**When** link được click  
+**Then** tab mới mở ra với:
+- Solana: Solscan.io
+- Ethereum: Etherscan.io
+- Base: BaseScan.org
+
+---
+
+#### AC 2.2.5: Feed Hoạt động Cá voi
+**Given** phát hiện nhiều giao dịch cá voi  
+**When** user mở panel Whale Activity  
+**Then** feed hiển thị danh sách theo thời gian:
+- Gần nhất ở trên cùng
+- 50 giao dịch cuối cùng
+- Gom nhóm theo token
+- Lọc theo: Tất cả tokens / Chỉ Watchlist
+
+**Tùy chọn Lọc:**  
+**Given** user có 100 whale transactions  
+**When** user lọc "Watchlist only"  
+**Then** chỉ hiển thị giao dịch của tokens trong watchlist  
+**When** user lọc "Smart Money only"  
+**Then** chỉ hiển thị giao dịch của ví được theo dõi
+
+**Cập nhật Real-time:**  
+**Given** user đang mở panel Whale Activity  
+**When** phát hiện giao dịch cá voi mới  
+**Then** item mới xuất hiện ở đầu feed  
+**And** hiệu ứng trượt mượt mà (smooth animation)  
+**And** badge unread tăng lên
 
 **UI Design:**
 ```
@@ -157,7 +343,7 @@ GET /api/alerts/check  // Returns triggered alerts
 └─────────────────────────────┘
 ```
 
-**Technical Implementation:**
+**Triển khai kỹ thuật:**
 ```typescript
 interface WhaleTransaction {
   id: string;
@@ -196,36 +382,145 @@ async function monitorWhaleActivity() {
 
 ---
 
-### Story 2.3: Rug Pull Early Warning System
+### Story 2.3: Hệ thống Cảnh báo Sớm Rug Pull (Rug Pull Early Warning System)
 **[FR-EXT-09]**
 
 **Là một** crypto trader,  
-**Tôi muốn** được cảnh báo sớm về rug pull risks,  
-**Để** tôi không mất tiền vào scam tokens.
+**Tôi muốn** được cảnh báo sớm về rủi ro rug pull,  
+**Để** tôi không mất tiền vào các token lừa đảo (scam tokens).
 
-**Acceptance Criteria:**
-- [ ] Risk indicators monitored:
-  - LP removal (liquidity pulled)
-  - Mint authority changes (can mint more tokens)
-  - Suspicious holder patterns (top 10 holders > 80%)
-  - Contract ownership (not renounced)
-  - Honeypot detection (can't sell)
-- [ ] Risk score calculation:
-  - 0-3: Low risk (green)
-  - 4-6: Medium risk (yellow)
-  - 7-10: High risk (red)
-- [ ] Risk score display:
-  - Show on Token Info Card
-  - Update in real-time
-  - Explain each risk factor
-- [ ] Recommendations:
-  - SAFE: "Low risk, proceed with caution"
-  - CAUTION: "Medium risk, do your own research"
-  - AVOID: "High risk, likely scam"
-- [ ] Alerts:
-  - Notify when risk score increases
-  - Notify on LP removal
-  - Notify on mint authority changes
+**Tiêu chí chấp nhận (Acceptance Criteria - BDD Format):**
+
+#### AC 2.3.1: Giám sát Chỉ số Rủi ro (Risk Indicators Monitoring)
+**Given** user đang xem token trên DexScreener  
+**When** hệ thống phân tích contract của token  
+**Then** các chỉ số rủi ro sau được kiểm tra:
+
+**Phát hiện Rút thanh khoản (LP Removal Detection):**  
+**Given** token có liquidity pool  
+**When** LP tokens bị rút hoặc mở khóa (unlocked)  
+**Then** điểm rủi ro +3 điểm  
+**And** cảnh báo "🔴 LP REMOVED: BULLA/SOL - Potential rug pull!"
+
+**Thay đổi Quyền Mint (Mint Authority Changes):**  
+**Given** token mint authority tồn tại  
+**When** mint authority chưa được từ bỏ (not renounced)  
+**Then** điểm rủi ro +2 điểm  
+**And** cảnh báo "🟡 Mint authority active - can create unlimited tokens"
+
+**Mô hình Holder Đáng ngờ:**  
+**Given** token có phân bổ holder  
+**When** top 10 holders sở hữu >80% nguồn cung  
+**Then** điểm rủi ro +2 điểm  
+**And** cảnh báo "🟡 Centralized ownership - top 10 hold 85%"
+
+**Quyền sở hữu Contract:**  
+**Given** token contract có chủ sở hữu (owner)  
+**When** ownership chưa được từ bỏ  
+**Then** điểm rủi ro +1 điểm  
+**And** cảnh báo "🟡 Contract owner can modify code"
+
+**Phát hiện Honeypot:**  
+**Given** token contract được phân tích  
+**When** chức năng bán bị vô hiệu hóa hoặc hạn chế  
+**Then** điểm rủi ro +3 điểm  
+**And** cảnh báo nghiêm trọng "🔴 HONEYPOT DETECTED - Cannot sell!"
+
+---
+
+#### AC 2.3.2: Tính toán Điểm Rủi ro (Risk Score Calculation)
+**Given** tất cả chỉ số rủi ro đã được phân tích  
+**When** hệ thống tính tổng điểm rủi ro  
+**Then** điểm số hiển thị như sau:
+
+**Rủi ro Thấp (Low Risk - 0-3):**  
+**Given** điểm rủi ro = 2  
+**Then** badge hiển thị "✅ Low Risk (2/10)"  
+**And** màu xanh lá  
+**And** khuyến nghị "SAFE: Proceed with caution"
+
+**Rủi ro Trung bình (Medium Risk - 4-6):**  
+**Given** điểm rủi ro = 5  
+**Then** badge hiển thị "⚠️ Medium Risk (5/10)"  
+**And** màu vàng  
+**And** khuyến nghị "CAUTION: Do your own research"
+
+**Rủi ro Cao (High Risk - 7-10):**  
+**Given** điểm rủi ro = 8  
+**Then** badge hiển thị "🔴 High Risk (8/10)"  
+**And** màu đỏ  
+**And** khuyến nghị "AVOID: Likely scam"
+
+---
+
+#### AC 2.3.3: Hiển thị Điểm Rủi ro
+**Given** token đã được phân tích  
+**When** user xem Token Info Card  
+**Then** điểm rủi ro hiển thị nổi bật:
+- Risk badge ở trên cùng
+- Các yếu tố rủi ro riêng lẻ được liệt kê
+- Mỗi yếu tố với icon (🔴/🟡/🟢)
+- Giải thích cho mỗi yếu tố
+
+**Cập nhật Real-time:**  
+**Given** điểm rủi ro ban đầu là 3/10  
+**When** LP bị rút (rủi ro tăng lên 6/10)  
+**Then** risk badge cập nhật ngay lập tức  
+**And** màu thay đổi từ xanh -> vàng  
+**And** gửi thông báo
+
+**Giải thích Yếu tố Rủi ro:**  
+**Given** user click vào risk badge  
+**When** modal chi tiết mở ra  
+**Then** giải thích từng yếu tố:
+- "🔴 LP unlocked (High Risk): Liquidity can be removed anytime"
+- "🟡 Top holder owns 40%: Centralized ownership risk"
+- "🟢 Contract verified: Code is public and audited"
+
+---
+
+#### AC 2.3.4: Khuyến nghị (Recommendations)
+**Given** điểm rủi ro đã tính toán  
+**When** hệ thống tạo khuyến nghị  
+**Then** thông điệp phù hợp hiển thị:
+
+**SAFE (0-3):**  
+**Then** thông điệp "✅ Low risk, proceed with caution. Always DYOR."
+
+**CAUTION (4-6):**  
+**Then** thông điệp "⚠️ Medium risk, do your own research. Some red flags detected."
+
+**AVOID (7-10):**  
+**Then** thông điệp "🔴 High risk, likely scam. Strong evidence of rug pull potential."
+
+---
+
+#### AC 2.3.5: Cảnh báo Rủi ro (Risk Alerts)
+**Given** user có token trong watchlist  
+**When** điểm rủi ro tăng lên  
+**Then** cảnh báo được kích hoạt
+
+**Tăng Điểm Rủi ro:**  
+**Given** điểm rủi ro là 3/10  
+**When** rủi ro tăng lên 7/10  
+**Then** thông báo "⚠️ RISK ALERT: BULLA/SOL risk increased to 7/10 (High Risk)"
+
+**Cảnh báo Rút LP:**  
+**Given** token có LP bị khóa  
+**When** LP bị rút  
+**Then** cảnh báo khẩn cấp "🚨 URGENT: LP REMOVED from BULLA/SOL - Exit immediately!"  
+**And** âm thanh cảnh báo phát ra  
+**And** thông báo tồn tại cho đến khi bị tắt (dismissed)
+
+**Thay đổi Quyền Mint:**  
+**Given** mint authority đã được từ bỏ  
+**When** mint authority được kích hoạt lại  
+**Then** cảnh báo "⚠️ WARNING: Mint authority changed for BULLA/SOL"
+
+**Phát hiện Honeypot:**  
+**Given** token có thể bán được  
+**When** honeypot bị phát hiện  
+**Then** cảnh báo nghiêm trọng "🔴 HONEYPOT: Cannot sell BULLA/SOL - Do not buy!"
 
 **UI Design:**
 ```
@@ -247,7 +542,7 @@ async function monitorWhaleActivity() {
 └─────────────────────────────┘
 ```
 
-**Technical Implementation:**
+**Triển khai kỹ thuật:**
 ```typescript
 interface RiskAssessment {
   tokenAddress: string;
@@ -265,50 +560,6 @@ interface RiskAssessment {
   recommendation: 'safe' | 'caution' | 'avoid';
   explanation: string;
   timestamp: number;
-}
-
-async function assessRugPullRisk(tokenAddress: string, chain: string): Promise<RiskAssessment> {
-  // Check LP lock status
-  const lpLocked = await checkLPLock(tokenAddress, chain);
-  
-  // Check mint authority
-  const mintAuthority = await checkMintAuthority(tokenAddress, chain);
-  
-  // Check holder distribution
-  const holders = await getTopHolders(tokenAddress, chain);
-  const topHolderPercent = calculateTopHolderPercent(holders);
-  
-  // Check contract verification
-  const contractVerified = await isContractVerified(tokenAddress, chain);
-  
-  // Check honeypot
-  const isHoneypot = await checkHoneypot(tokenAddress, chain);
-  
-  // Calculate risk score
-  const riskScore = calculateRiskScore({
-    lpLocked,
-    mintAuthority,
-    topHolderPercent,
-    contractVerified,
-    isHoneypot,
-  });
-  
-  return {
-    tokenAddress,
-    chain,
-    riskScore,
-    riskLevel: getRiskLevel(riskScore),
-    indicators: {
-      lpLocked,
-      mintAuthority,
-      topHolderPercent,
-      contractVerified,
-      isHoneypot,
-    },
-    recommendation: getRecommendation(riskScore),
-    explanation: generateExplanation(riskScore, indicators),
-    timestamp: Date.now(),
-  };
 }
 ```
 
@@ -355,20 +606,20 @@ GET  /api/risk/assess
 ## Testing Strategy
 
 ### Unit Tests
-- [ ] Risk score calculation
-- [ ] Whale transaction detection
-- [ ] Alert triggering logic
+- [ ] Tính toán điểm rủi ro (Risk score calculation)
+- [ ] Phát hiện giao dịch cá voi (Whale transaction detection)
+- [ ] Logic kích hoạt cảnh báo (Alert triggering logic)
 
 ### Integration Tests
-- [ ] Price alerts trigger correctly
-- [ ] Whale activity notifications work
-- [ ] Risk assessment updates in real-time
+- [ ] Price alerts kích hoạt chính xác
+- [ ] Thông báo hoạt động cá voi hoạt động
+- [ ] Đánh giá rủi ro cập nhật realtime
 
 ### Manual Testing
-- [ ] Add token to watchlist
-- [ ] Set price alert and verify notification
-- [ ] Monitor whale activity on live token
-- [ ] Check rug pull warning on known scam token
+- [ ] Thêm token vào watchlist
+- [ ] Đặt price alert và xác minh thông báo
+- [ ] Giám sát hoạt động cá voi trên live token
+- [ ] Kiểm tra cảnh báo rug pull trên scam token đã biết
 
 ---
 
@@ -385,8 +636,8 @@ GET  /api/risk/assess
 
 ---
 
-## Notes
+## Ghi chú
 
-**Priority Justification:** Risk protection (rug pull detection) is CRITICAL for user trust. Users will not use the product if they lose money to scams.
+**Priority Justification:** Risk protection (rug pull detection) là QUAN TRỌNG (CRITICAL) cho niềm tin của user. Users sẽ không sử dụng sản phẩm nếu họ mất tiền vì scams.
 
 **Next Epic:** Epic 3 - Trading Intelligence (Phase 3)

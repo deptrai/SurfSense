@@ -1,77 +1,77 @@
-# Epic 3: Trading Intelligence
+# Epic 3: Trading Intelligence (Trí tuệ Giao dịch)
 
-**Status:** 📋 PLANNED  
-**Phase:** Phase 3  
-**Duration:** 2 weeks  
-**Priority:** P1 (High - Value Add)
+**Trạng thái:** 📋 ĐÃ LÊN KẾ HOẠCH (PLANNED)  
+**Giai đoạn:** Phase 3  
+**Thời gian:** 2 tuần  
+**Mức độ ưu tiên:** P1 (Cao - Giá trị gia tăng)
 
 ---
 
-## Epic Overview
+## Tổng quan Epic
 
-Cung cấp AI-powered trading insights để giúp users make better trading decisions. Tập trung vào **comprehensive analysis**, **entry/exit suggestions**, và **portfolio tracking**.
+Cung cấp AI-powered trading insights để giúp users ra quyết định giao dịch tốt hơn (make better trading decisions). Tập trung vào **phân tích toàn diện (comprehensive analysis)**, **gợi ý điểm vào/ra (entry/exit suggestions)**, và **theo dõi danh mục đầu tư (portfolio tracking)**.
 
-**Business Value:**
-- **Better Decisions:** AI-generated insights giúp users trade smarter
-- **Time Savings:** One-click analysis thay vì hours of research
-- **Portfolio Management:** Track performance và optimize holdings
-- **Competitive Advantage:** AI predictions vs static data (DexScreener/DexTools)
+**Giá trị kinh doanh (Business Value):**
+- **Quyết định tốt hơn:** AI-generated insights giúp users trade thông minh hơn.
+- **Tiết kiệm thời gian:** Phân tích một cú click thay vì hàng giờ nghiên cứu.
+- **Quản lý danh mục:** Theo dõi hiệu suất và tối ưu hóa holdings.
+- **Lợi thế cạnh tranh:** Dự đoán AI so với dữ liệu tĩnh (DexScreener/DexTools).
 
-**Key Differentiator:** AI-first analysis với natural language explanations.
+**Điểm khác biệt chính:** Phân tích ưu tiên AI (AI-first analysis) với các giải thích bằng ngôn ngữ tự nhiên.
 
 ---
 
 ## User Stories
 
-### Story 3.1: One-Click Token Analysis
+### Story 3.1: Phân tích Token Một Cú Click (One-Click Token Analysis)
 **[FR-EXT-10]**
 
 **Là một** crypto trader,  
 **Tôi muốn** analyze token với một click,  
-**Để** tôi có comprehensive insights mà không cần research thủ công.
+**Để** tôi có insights toàn diện mà không cần nghiên cứu thủ công.
 
-**Acceptance Criteria:**
-- [ ] "Analyze This Token" button trên Token Info Card
-- [ ] Comprehensive analysis includes:
-  - **Contract Analysis:**
-    - Verified/unverified
-    - Renounced ownership
-    - Proxy contract detection
-    - Source code availability
-  - **Holder Distribution:**
-    - Top 10 holders percentage
-    - Holder count
-    - Whale concentration
-    - Distribution chart
-  - **Liquidity Analysis:**
-    - Total liquidity (USD)
-    - LP lock status & duration
-    - Liquidity history (7d, 30d)
-    - Liquidity/Market cap ratio
-  - **Trading Volume:**
-    - 24h volume
-    - Volume trend (increasing/decreasing)
-    - Volume/Liquidity ratio
-    - Unusual volume spikes
-  - **Price History:**
-    - All-time high/low
-    - 7d, 30d performance
-    - Price volatility
-    - Support/resistance levels
-  - **Social Sentiment:**
+**Tiêu chí chấp nhận (Acceptance Criteria):**
+- [ ] Nút "Analyze This Token" trên Thẻ Thông tin Token (Token Info Card)
+- [ ] Phân tích toàn diện bao gồm:
+  - **Phân tích Hợp đồng (Contract Analysis):**
+    - Đã xác minh/chưa xác minh (Verified/unverified)
+    - Từ bỏ quyền sở hữu (Renounced ownership)
+    - Phát hiện Proxy contract
+    - Tính khả dụng của mã nguồn (Source code availability)
+  - **Phân bổ Holder (Holder Distribution):**
+    - Tỷ lệ Top 10 holders
+    - Số lượng Holder
+    - Độ tập trung của Whale
+    - Biểu đồ phân bổ
+  - **Phân tích Thanh khoản (Liquidity Analysis):**
+    - Tổng thanh khoản (USD)
+    - Trạng thái khóa LP & thời hạn
+    - Lịch sử thanh khoản (7 ngày, 30 ngày)
+    - Tỷ lệ Thanh khoản/Vốn hóa (Liquidity/Market cap ratio)
+  - **Khối lượng Giao dịch (Trading Volume):**
+    - Volume 24h
+    - Xu hướng Volume (tăng/giảm)
+    - Tỷ lệ Volume/Thanh khoản
+    - Các đợt tăng volume bất thường (Unusual volume spikes)
+  - **Lịch sử Giá (Price History):**
+    - Giá cao nhất/thấp nhất mọi thời đại (ATH/ATL)
+    - Hiệu suất 7 ngày, 30 ngày
+    - Biến động giá (Price volatility)
+    - Các mức Hỗ trợ/Kháng cự (Support/resistance levels)
+  - **Cảm xúc Xã hội (Social Sentiment):**
     - Twitter mentions
-    - Telegram activity
-    - Reddit discussions
-    - Sentiment score (positive/negative/neutral)
-- [ ] AI-Generated Summary:
-  - 2-3 sentence summary
-  - Key insights highlighted
-  - Risk assessment
-  - Trading recommendation
-- [ ] Analysis caching:
-  - Cache for 5 minutes
-  - Show "Last updated" timestamp
-  - Refresh button
+    - Hoạt động Telegram
+    - Thảo luận Reddit
+    - Điểm cảm xúc (tích cực/tiêu cực/trung lập)
+- [ ] Tóm tắt do AI tạo (AI-Generated Summary):
+  - Tóm tắt 2-3 câu
+  - Các insight chính được làm nổi bật
+  - Đánh giá rủi ro (Risk assessment)
+  - Khuyến nghị giao dịch (Trading recommendation)
+- [ ] Caching phân tích:
+  - Cache trong 5 phút
+  - Hiển thị timestamp "Cập nhật lần cuối"
+  - Nút Refresh
 
 **UI Design:**
 ```
@@ -104,10 +104,10 @@ Cung cấp AI-powered trading insights để giúp users make better trading dec
 │                             │
 │ [View Full Report]          │
 │ Last updated: 2 min ago     │
-└─────────────────────────────┘
+107: └─────────────────────────────┘
 ```
 
-**Technical Implementation:**
+**Triển khai kỹ thuật:**
 ```typescript
 interface TokenAnalysis {
   tokenAddress: string;
@@ -211,36 +211,36 @@ async function analyzeToken(tokenAddress: string, chain: string): Promise<TokenA
 
 ---
 
-### Story 3.2: Smart Entry/Exit Suggestions
+### Story 3.2: Gợi ý Điểm Vào/Ra Thông minh (Smart Entry/Exit Suggestions)
 **[FR-EXT-11]**
 
 **Là một** crypto trader,  
-**Tôi muốn** AI suggest entry/exit points,  
-**Để** tôi maximize profits và minimize losses.
+**Tôi muốn** AI gợi ý các điểm entry/exit,  
+**Để** tôi tối đa hóa lợi nhuận và giảm thiểu rủi ro.
 
-**Acceptance Criteria:**
-- [ ] Technical analysis:
-  - Support/Resistance levels (3 levels each)
-  - Fibonacci retracement levels
-  - Volume profile analysis
-  - Moving averages (20, 50, 200)
-- [ ] AI predictions:
-  - Predicted price targets (3 levels)
-  - Time horizon (1h, 4h, 24h)
-  - Confidence score per prediction
-- [ ] Risk/Reward calculation:
-  - Suggested entry range
-  - Stop loss level
-  - Take profit levels (3 targets)
-  - Risk/Reward ratio
-- [ ] Visual representation:
-  - Price chart with levels marked
-  - Entry/exit zones highlighted
-  - Risk/reward visualization
-- [ ] Explanation:
-  - Why these levels?
-  - What signals support this?
-  - What could invalidate this?
+**Tiêu chí chấp nhận (Acceptance Criteria):**
+- [ ] Phân tích kỹ thuật (Technical analysis):
+  - Các mức Hỗ trợ/Kháng cự (3 levels each)
+  - Các mức Fibonacci retracement
+  - Phân tích Volume profile
+  - Đường trung bình động (Moving averages) (20, 50, 200)
+- [ ] Dự đoán của AI (AI predictions):
+  - Mục tiêu giá dự kiến (Predicted price targets) (3 levels)
+  - Khung thời gian (1h, 4h, 24h)
+  - Điểm tin cậy (Confidence score) cho mỗi dự đoán
+- [ ] Tính toán Rủi ro/Lợi nhuận (Risk/Reward):
+  - Vùng vào lệnh gợi ý (Suggested entry range)
+  - Mức cắt lỗ (Stop loss level)
+  - Các mức chốt lời (Take profit levels) (3 targets)
+  - Tỷ lệ Risk/Reward
+- [ ] Trực quan hóa (Visual representation):
+  - Biểu đồ giá với các levels được đánh dấu
+  - Vùng entry/exit được làm nổi bật
+  - Trực quan hóa Risk/reward
+- [ ] Giải thích (Explanation):
+  - Tại sao lại là các levels này?
+  - Tín hiệu nào hỗ trợ điều này?
+  - Điều gì có thể vô hiệu hóa dự đoán này?
 
 **UI Design:**
 ```
@@ -272,7 +272,7 @@ async function analyzeToken(tokenAddress: string, chain: string): Promise<TokenA
 └─────────────────────────────┘
 ```
 
-**Technical Implementation:**
+**Triển khai kỹ thuật:**
 ```typescript
 interface TradingSuggestion {
   tokenAddress: string;
@@ -320,40 +320,40 @@ interface TradingSuggestion {
 
 ---
 
-### Story 3.3: Portfolio Tracker Integration
+### Story 3.3: Tích hợp Theo dõi Portfolio (Portfolio Tracker Integration)
 **[FR-EXT-12]**
 
 **Là một** crypto trader,  
-**Tôi muốn** track portfolio trong extension,  
-**Để** tôi biết P&L real-time mà không cần mở nhiều tabs.
+**Tôi muốn** theo dõi portfolio ngay trong extension,  
+**Để** tôi biết P&L realtime mà không cần mở nhiều tab.
 
-**Acceptance Criteria:**
-- [ ] Wallet connection:
-  - Support MetaMask, Phantom, Coinbase Wallet
-  - Multi-wallet support
-  - Auto-detect holdings
-- [ ] Portfolio overview:
-  - Total value (USD)
-  - 24h P&L ($ and %)
+**Tiêu chí chấp nhận (Acceptance Criteria):**
+- [ ] Kết nối Ví (Wallet connection):
+  - Hỗ trợ MetaMask, Phantom, Coinbase Wallet
+  - Hỗ trợ Multi-wallet
+  - Tự động phát hiện holdings
+- [ ] Tổng quan Portfolio:
+  - Tổng giá trị (USD)
+  - 24h P&L ($ và %)
   - All-time P&L
-  - Asset allocation chart
-- [ ] Holdings list:
+  - Biểu đồ phân bổ tài sản
+- [ ] Danh sách Holdings:
   - Token symbol/name
-  - Amount held
-  - Current value
-  - 24h change
-  - P&L per token
-  - Entry price (if available)
-- [ ] Performance analytics:
+  - Số lượng nắm giữ (Amount held)
+  - Giá trị hiện tại
+  - Thay đổi 24h
+  - P&L theo từng token
+  - Giá entry (nếu có sẵn)
+- [ ] Phân tích Hiệu suất (Performance analytics):
   - Best/worst performers
-  - Win rate
-  - Average hold time
-  - Total trades
-- [ ] Quick actions:
+  - Tỷ lệ thắng (Win rate)
+  - Thời gian giữ trung bình (Average hold time)
+  - Tổng số giao dịch
+- [ ] Thao tác nhanh (Quick actions):
   - Analyze token
   - Set price alert
-  - View on DexScreener
-  - Sell (link to DEX)
+  - Xem trên DexScreener
+  - Sell (link tới DEX)
 
 **UI Design:**
 ```
@@ -384,7 +384,7 @@ interface TradingSuggestion {
 └─────────────────────────────┘
 ```
 
-**Technical Implementation:**
+**Triển khai kỹ thuật:**
 ```typescript
 interface Portfolio {
   wallets: {
@@ -429,7 +429,7 @@ interface Portfolio {
 
 ---
 
-## Technical Dependencies
+## Các phụ thuộc kỹ thuật (Technical Dependencies)
 
 ### Backend APIs
 ```
@@ -453,38 +453,38 @@ GET  /api/portfolio/analytics
 
 ---
 
-## Testing Strategy
+## Chiến lược Kiểm thử (Testing Strategy)
 
 ### Unit Tests
-- [ ] Token analysis calculation
-- [ ] Trading suggestion algorithm
-- [ ] Portfolio P&L calculation
+- [ ] Tính toán phân tích Token
+- [ ] Thuật toán gợi ý giao dịch
+- [ ] Tính toán P&L Portfolio
 
 ### Integration Tests
-- [ ] Wallet connection flow
-- [ ] Portfolio data fetching
-- [ ] Analysis generation
+- [ ] Quy trình kết nối Wallet
+- [ ] Fetch dữ liệu Portfolio
+- [ ] Tạo phân tích (Analysis generation)
 
 ### Manual Testing
-- [ ] Analyze live token
-- [ ] Connect wallet and view portfolio
-- [ ] Verify trading suggestions accuracy
+- [ ] Phân tích một token trực tiếp (live token)
+- [ ] Kết nối ví và xem portfolio
+- [ ] Xác minh độ chính xác của các gợi ý giao dịch
 
 ---
 
-## Definition of Done
+## Định nghĩa hoàn thành (Definition of Done)
 
-- [ ] All 3 stories completed
-- [ ] All acceptance criteria met
-- [ ] Unit tests passing
-- [ ] Integration tests passing
-- [ ] Manual testing completed
-- [ ] Wallet integrations working
-- [ ] Code reviewed
-- [ ] Documentation updated
+- [ ] Tất cả 3 user stories hoàn thành
+- [ ] Tất cả tiêu chí chấp nhận (acceptance criteria) được đáp ứng
+- [ ] Unit tests pass
+- [ ] Integration tests pass
+- [ ] Manual testing hoàn thành
+- [ ] Tích hợp Wallet hoạt động
+- [ ] Code được review
+- [ ] Tài liệu được cập nhật
 
 ---
 
-## Notes
+## Ghi chú
 
 **Next Epic:** Epic 4 - Content Creation & Productivity (Phase 4)

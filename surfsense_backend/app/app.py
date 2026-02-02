@@ -75,6 +75,8 @@ if not config.BACKEND_URL or (
         [
             "http://localhost:3000",
             "http://127.0.0.1:3000",
+            "http://localhost:3999",
+            "http://127.0.0.1:3999",
         ]
     )
 

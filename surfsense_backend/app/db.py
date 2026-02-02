@@ -1324,7 +1324,10 @@ else:
         avatar_url = Column(String, nullable=True)
 
 
-engine = create_async_engine(DATABASE_URL)
+engine = create_async_engine(
+    DATABASE_URL,
+    connect_args={"ssl": False}  # Disable SSL for local development
+)
 async_session_maker = async_sessionmaker(engine, expire_on_commit=False)
 
 

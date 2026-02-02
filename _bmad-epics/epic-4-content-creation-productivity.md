@@ -1,65 +1,65 @@
-# Epic 4: Content Creation & Productivity
+# Epic 4: Content Creation & Productivity (Tạo Nội dung & Hiệu suất)
 
-**Status:** 📋 PLANNED  
-**Phase:** Phase 4  
-**Duration:** 2 weeks  
-**Priority:** P2 (Medium - Nice to Have)
+**Trạng thái:** 📋 ĐÃ LÊN KẾ HOẠCH (PLANNED)  
+**Giai đoạn:** Phase 4  
+**Thời gian:** 2 tuần  
+**Mức độ ưu tiên:** P2 (Trung bình - Nên có (Nice to Have))
 
 ---
 
-## Epic Overview
+## Tổng quan Epic
 
-Tạo tools giúp users create content (charts, threads) và improve productivity (quick actions, notifications, shortcuts). Tập trung vào **content creators** và **power users**.
+Tạo tools giúp users tạo nội dung (biểu đồ, threads) và cải thiện hiệu suất (thao tác nhanh, thông báo, phím tắt). Tập trung vào **content creators** và **power users**.
 
-**Business Value:**
-- **Content Creators:** Tools để tạo Twitter threads, chart screenshots
-- **Power Users:** Keyboard shortcuts, quick actions để work faster
-- **Viral Marketing:** Users share content → Free marketing
-- **User Retention:** Productivity features → Sticky product
+**Giá trị kinh doanh (Business Value):**
+- **Content Creators:** Công cụ để tạo Twitter threads, chụp ảnh biểu đồ (chart screenshots).
+- **Power Users:** Phím tắt, thao tác nhanh để làm việc nhanh hơn.
+- **Viral Marketing:** Users chia sẻ nội dung → Marketing miễn phí.
+- **User Retention:** Các tính năng hiệu suất → Sản phẩm có độ kết dính cao (Sticky product).
 
-**Key Differentiator:** AI-powered content generation vs manual tools.
+**Điểm khác biệt chính:** Tạo nội dung bằng AI (AI-powered content generation) so với công cụ thủ công.
 
 ---
 
 ## User Stories
 
-### Story 4.1: Chart Screenshot with Annotations
+### Story 4.1: Chụp ảnh Biểu đồ có Chú thích (Chart Screenshot with Annotations)
 **[FR-EXT-13]**
 
 **Là một** crypto content creator,  
-**Tôi muốn** capture và annotate charts,  
-**Để** tôi có thể share insights trên Twitter/Telegram.
+**Tôi muốn** chụp và chú thích biểu đồ (capture và annotate charts),  
+**Để** tôi có thể chia sẻ insights trên Twitter/Telegram.
 
-**Acceptance Criteria:**
-- [ ] One-click chart capture:
-  - Capture from DexScreener page
-  - Auto-detect chart area
-  - High-resolution screenshot
-- [ ] Auto-add metadata:
+**Tiêu chí chấp nhận (Acceptance Criteria):**
+- [ ] Chụp biểu đồ một cú click (One-click chart capture):
+  - Capture từ trang DexScreener
+  - Tự động phát hiện vùng biểu đồ
+  - Screenshot độ phân giải cao
+- [ ] Tự động thêm metadata (Auto-add metadata):
   - Token symbol/name
-  - Current price
-  - 24h change
-  - Volume, liquidity
-  - Timestamp
-  - Watermark (optional)
-- [ ] Drawing tools:
-  - Lines (trend lines, support/resistance)
-  - Arrows (direction indicators)
-  - Text labels
-  - Shapes (circles, rectangles)
+  - Giá hiện tại
+  - Thay đổi 24h
+  - Volume, thanh khoản
+  - Thời gian (Timestamp)
+  - Watermark (tùy chọn)
+- [ ] Công cụ vẽ (Drawing tools):
+  - Đường (trend lines, support/resistance)
+  - Mũi tên (chỉ hướng)
+  - Nhãn văn bản (Text labels)
+  - Hình dạng (tròn, chữ nhật)
   - Fibonacci retracement
-- [ ] Template styles:
-  - Dark mode (default)
+- [ ] Kiểu mẫu (Template styles):
+  - Dark mode (mặc định)
   - Light mode
   - Neon (crypto aesthetic)
-  - Custom colors
-- [ ] Export options:
-  - Twitter format (1200x675)
-  - Telegram format (square)
-  - Instagram format (1080x1080)
-  - Custom size
-  - Copy to clipboard
-  - Save to file
+  - Màu tùy chỉnh
+- [ ] Tùy chọn xuất (Export options):
+  - Định dạng Twitter (1200x675)
+  - Định dạng Telegram (vuông)
+  - Định dạng Instagram (1080x1080)
+  - Kích thước tùy chỉnh
+  - Copy vào clipboard
+  - Lưu thành file
 
 **UI Design:**
 ```
@@ -86,7 +86,7 @@ Tạo tools giúp users create content (charts, threads) và improve productivit
 └─────────────────────────────┘
 ```
 
-**Technical Implementation:**
+**Triển khai kỹ thuật:**
 ```typescript
 interface ChartCapture {
   screenshot: Blob;
@@ -137,41 +137,41 @@ function addAnnotations(canvas: HTMLCanvasElement, annotations: Annotation[]) {
 
 ---
 
-### Story 4.2: AI Thread Generator
+### Story 4.2: AI tạo Thread Twitter (AI Thread Generator)
 **[FR-EXT-14]**
 
 **Là một** crypto content creator,  
-**Tôi muốn** AI generate Twitter threads,  
-**Để** tôi có thể share insights nhanh chóng.
+**Tôi muốn** AI tạo Twitter threads,  
+**Để** tôi có thể chia sẻ insights nhanh chóng.
 
-**Acceptance Criteria:**
-- [ ] Input:
-  - Token address (auto-filled if on DexScreener)
-  - Thread topic (optional)
-  - Thread length (5-10 tweets)
-  - Tone (bullish/neutral/bearish)
-- [ ] AI generation:
-  - Analyze token data
-  - Generate thread structure
-  - Include key stats
-  - Add charts/screenshots
-  - Optimize for engagement
-- [ ] Thread structure:
-  - Tweet 1: Hook (attention grabber)
-  - Tweets 2-4: Analysis (data, insights)
-  - Tweets 5-7: Implications (what it means)
-  - Tweet 8-9: Conclusion (summary, CTA)
-  - Tweet 10: Disclaimer (optional)
-- [ ] Editing:
-  - Edit each tweet
-  - Reorder tweets
-  - Add/remove tweets
-  - Preview thread
-- [ ] Export:
-  - Copy all tweets
-  - Copy individual tweet
-  - Tweet directly (Twitter API)
-  - Save as draft
+**Tiêu chí chấp nhận (Acceptance Criteria):**
+- [ ] Đầu vào (Input):
+  - Token address (tự động điền nếu đang trên DexScreener)
+  - Chủ đề Thread (tùy chọn)
+  - Độ dài Thread (5-10 tweets)
+  - Giọng điệu (Tone) (bullish/neutral/bearish)
+- [ ] AI tạo nội dung (AI generation):
+  - Phân tích dữ liệu token
+  - Tạo cấu trúc thread
+  - Bao gồm các thống kê chính
+  - Thêm biểu đồ/screenshots
+  - Tối ưu hóa cho tương tác (engagement)
+- [ ] Cấu trúc Thread:
+  - Tweet 1: Hook (thu hút sự chú ý)
+  - Tweets 2-4: Phân tích (dữ liệu, insights)
+  - Tweets 5-7: Hàm ý/Tác động (Implications - điều này có nghĩa là gì)
+  - Tweet 8-9: Kết luận (tóm tắt, CTA)
+  - Tweet 10: Tuyên bố miễn trừ trách nhiệm (Disclaimer - tùy chọn)
+- [ ] Chỉnh sửa (Editing):
+  - Chỉnh sửa từng tweet
+  - Sắp xếp lại thứ tự tweets
+  - Thêm/xóa tweets
+  - Xem trước thread
+- [ ] Xuất (Export):
+  - Copy tất cả tweets
+  - Copy từng tweet
+  - Tweet trực tiếp (Twitter API)
+  - Lưu nháp (Save as draft)
 
 **UI Design:**
 ```
@@ -194,13 +194,15 @@ function addAnnotations(canvas: HTMLCanvasElement, annotations: Annotation[]) {
 │ │ 2/ Contract analysis:   │ │
 │ │ ✅ Verified ✅ Renounced│ │
 │ │ [Edit]                  │ │
+│ ├─────────────────────────┤ │
+│ │ ...                     │ │
 │ └─────────────────────────┘ │
 │                             │
 │ [Copy All] [Tweet Now]      │
 └─────────────────────────────┘
 ```
 
-**Technical Implementation:**
+**Triển khai kỹ thuật:**
 ```typescript
 interface ThreadRequest {
   tokenAddress: string;
@@ -247,65 +249,65 @@ async function generateThread(request: ThreadRequest): Promise<GeneratedThread> 
 
 ---
 
-### Story 4.3: Quick Actions & Productivity
+### Story 4.3: Thao tác Nhanh & Hiệu suất (Quick Actions & Productivity)
 **[FR-EXT-15, FR-EXT-16, FR-EXT-17]**
 
 **Là một** power user,  
-**Tôi muốn** quick actions và shortcuts,  
-**Để** tôi có thể work faster.
+**Tôi muốn** có các thao tác nhanh và phím tắt,  
+**Để** tôi có thể làm việc nhanh hơn.
 
-**Acceptance Criteria:**
+**Tiêu chí chấp nhận (Acceptance Criteria):**
 
-#### Quick Actions Context Menu (FR-EXT-15)
-- [ ] Right-click on token address → Context menu
-- [ ] Menu items:
-  - "Add to Watchlist"
-  - "Analyze Token"
-  - "Check Safety"
-  - "Copy Address"
-  - "View on Explorer"
-  - "View on DexScreener"
-- [ ] Works on any webpage (not just DexScreener)
-- [ ] Auto-detect token address format
+#### Menu ngữ cảnh Thao tác nhanh (Quick Actions Context Menu) (FR-EXT-15)
+- [ ] Chuột phải vào địa chỉ token → Menu ngữ cảnh
+- [ ] Các mục Menu:
+  - "Add to Watchlist" (Thêm vào Watchlist)
+  - "Analyze Token" (Phân tích Token)
+  - "Check Safety" (Kiểm tra an toàn)
+  - "Copy Address" (Sao chép địa chỉ)
+  - "View on Explorer" (Xem trên Explorer)
+  - "View on DexScreener" (Xem trên DexScreener)
+- [ ] Hoạt động trên bất kỳ trang web nào (không chỉ DexScreener)
+- [ ] Tự động phát hiện định dạng địa chỉ token
 
-#### Smart Notifications (FR-EXT-16)
-- [ ] Notification priority levels:
-  - High: Rug pull warnings, whale dumps
-  - Medium: Price alerts, volume spikes
-  - Low: General updates
-- [ ] Quiet hours:
-  - Set sleep schedule (e.g., 11pm - 7am)
-  - No notifications during quiet hours
-  - Emergency alerts only (rug pulls)
-- [ ] Grouped notifications:
-  - Group by token
-  - Group by type
-  - Collapse similar notifications
-- [ ] Smart batching:
-  - 5+ alerts → 1 summary notification
-  - "5 price alerts triggered"
-  - Click to expand
-- [ ] Per-token settings:
-  - Enable/disable notifications
-  - Set priority level
-  - Custom quiet hours
+#### Thông báo Thông minh (Smart Notifications) (FR-EXT-16)
+- [ ] Các mức ưu tiên thông báo:
+  - Cao (High): Cảnh báo Rug pull, whale xả hàng
+  - Trung bình (Medium): Cảnh báo giá, khối lượng tăng đột biến
+  - Thấp (Low): Các cập nhật chung
+- [ ] Giờ yên tĩnh (Quiet hours):
+  - Đặt lịch ngủ (ví dụ: 11pm - 7am)
+  - Không có thông báo trong giờ yên tĩnh
+  - Chỉ cảnh báo khẩn cấp (rug pulls)
+- [ ] Gom nhóm thông báo (Grouped notifications):
+  - Gom theo token
+  - Gom theo loại
+  - Thu gọn các thông báo tương tự
+- [ ] Gom nhóm thông minh (Smart batching):
+  - 5+ cảnh báo → 1 thông báo tóm tắt
+  - "5 cảnh báo giá đã được kích hoạt"
+  - Click để mở rộng
+- [ ] Cài đặt theo từng token (Per-token settings):
+  - Bật/tắt thông báo
+  - Đặt mức ưu tiên
+  - Giờ yên tĩnh tùy chỉnh
 
-#### Keyboard Shortcuts (FR-EXT-17)
-- [ ] Global shortcuts:
-  - `Cmd+Shift+S` → Open side panel
-  - `Cmd+Shift+H` → Hide side panel
-  - `Cmd+Shift+N` → New chat
-- [ ] Context shortcuts (when on DexScreener):
-  - `Cmd+Shift+A` → Analyze current token
-  - `Cmd+Shift+W` → Add to watchlist
-  - `Cmd+Shift+C` → Capture chart
-  - `Cmd+Shift+T` → Generate thread
-- [ ] Portfolio shortcuts:
-  - `Cmd+Shift+P` → Open portfolio
-  - `Cmd+Shift+R` → Refresh portfolio
-- [ ] Customizable shortcuts:
-  - User can remap shortcuts
-  - No conflicts with browser shortcuts
+#### Phím tắt Bàn phím (Keyboard Shortcuts) (FR-EXT-17)
+- [ ] Phím tắt toàn cục (Global shortcuts):
+  - `Cmd+Shift+S` → Mở side panel
+  - `Cmd+Shift+H` → Ẩn side panel
+  - `Cmd+Shift+N` → Chat mới
+- [ ] Phím tắt ngữ cảnh (khi trên DexScreener):
+  - `Cmd+Shift+A` → Phân tích token hiện tại
+  - `Cmd+Shift+W` → Thêm vào watchlist
+  - `Cmd+Shift+C` → Chụp biểu đồ
+  - `Cmd+Shift+T` → Tạo thread
+- [ ] Phím tắt Portfolio:
+  - `Cmd+Shift+P` → Mở portfolio
+  - `Cmd+Shift+R` → Làm mới portfolio
+- [ ] Phím tắt tùy chỉnh:
+  - User có thể remap phím tắt
+  - Không xung đột với phím tắt trình duyệt
 
 **UI Design - Settings:**
 ```
@@ -330,7 +332,7 @@ async function generateThread(request: ThreadRequest): Promise<GeneratedThread> 
 └─────────────────────────────┘
 ```
 
-**Technical Implementation:**
+**Triển khai kỹ thuật:**
 ```typescript
 // Context menu
 chrome.contextMenus.create({
@@ -395,57 +397,57 @@ function shouldShowNotification(notification: Notification, settings: Notificati
 
 ---
 
-## Technical Dependencies
+## Các phụ thuộc kỹ thuật (Technical Dependencies)
 
 ### Chrome APIs
 - `chrome.contextMenus` - Context menu
-- `chrome.commands` - Keyboard shortcuts
-- `chrome.notifications` - Notifications
-- `chrome.alarms` - Quiet hours
+- `chrome.commands` - Phím tắt bàn phím
+- `chrome.notifications` - Thông báo
+- `chrome.alarms` - Giờ yên tĩnh
 
 ### External Libraries
-- `html2canvas` - Chart capture
-- `fabric.js` - Drawing tools (optional)
+- `html2canvas` - Chụp biểu đồ
+- `fabric.js` - Công cụ vẽ (tùy chọn)
 
 ---
 
-## Testing Strategy
+## Chiến lược Kiểm thử (Testing Strategy)
 
 ### Unit Tests
-- [ ] Token address detection
-- [ ] Notification priority logic
-- [ ] Quiet hours calculation
+- [ ] Logic phát hiện địa chỉ token
+- [ ] Logic ưu tiên thông báo
+- [ ] Tính toán giờ yên tĩnh
 
 ### Integration Tests
-- [ ] Chart capture works
-- [ ] Thread generation works
-- [ ] Context menu appears
-- [ ] Shortcuts trigger actions
+- [ ] Chụp biểu đồ hoạt động
+- [ ] Tạo thread hoạt động
+- [ ] Menu ngữ cảnh xuất hiện
+- [ ] Phím tắt kích hoạt hành động
 
 ### Manual Testing
-- [ ] Capture chart and annotate
-- [ ] Generate thread for live token
-- [ ] Test all keyboard shortcuts
-- [ ] Verify quiet hours work
+- [ ] Chụp và chú thích biểu đồ
+- [ ] Tạo thread cho token live
+- [ ] Test tất cả các phím tắt
+- [ ] Xác minh giờ yên tĩnh hoạt động
 
 ---
 
-## Definition of Done
+## Định nghĩa hoàn thành (Definition of Done)
 
-- [ ] All 3 stories completed
-- [ ] All acceptance criteria met
-- [ ] Unit tests passing
-- [ ] Integration tests passing
-- [ ] Manual testing completed
-- [ ] Code reviewed
-- [ ] Documentation updated
+- [ ] Tất cả 3 user stories hoàn thành
+- [ ] Tất cả tiêu chí chấp nhận được đáp ứng
+- [ ] Unit tests pass
+- [ ] Integration tests pass
+- [ ] Manual testing hoàn thành
+- [ ] Code được review
+- [ ] Tài liệu được cập nhật
 
 ---
 
-## Notes
+## Ghi chú
 
 **Target Users:** Content creators và power users.
 
-**Marketing Opportunity:** User-generated content (threads, charts) → Free viral marketing.
+**Cơ hội Marketing:** User-generated content (threads, charts) → Viral marketing miễn phí.
 
-**All Epics Complete!** 🎉
+**Tất cả Epics Đã Hoàn Thành!** 🎉
