@@ -110,3 +110,75 @@ Khi thêm connector mới, cần update **4 locations**:
 
 ---
 
+## Hybrid Crypto Data Architecture (Feb 2026)
+
+### Vấn Đề: Data Freshness cho Crypto
+
+Kiến trúc Connector ban đầu sử dụng **periodic indexing** (5-60 phút) để index data từ DexScreener vào database. Điều này phù hợp cho:
+- ✅ Phân tích lịch sử, xu hướng
+- ✅ Research & context
+- ❌ **KHÔNG** phù hợp cho real-time price queries
+
+### Giải Pháp: Hybrid Approach (RAG + Real-time)
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                         USER QUERY                                      │
+│                    "Phân tích BULLA cho tôi"                            │
+└─────────────────────────────────────────────────────────────────────────┘
+                                │
+                                ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      AI AGENT (LangGraph)                               │
+│                                                                         │
+│   Quyết định dùng tool nào dựa trên intent:                             │
+│                                                                         │
+│   ┌─────────────────────────┐    ┌─────────────────────────────────┐   │
+│   │  RAG Tools              │    │  Real-time Tools                │   │
+│   │  (Indexed Data)         │    │  (Live API Calls)               │   │
+│   ├─────────────────────────┤    ├─────────────────────────────────┤   │
+│   │ search_knowledge_base   │    │ get_live_token_price            │   │
+│   │                         │    │ get_live_token_data             │   │
+│   │ • Xu hướng lịch sử      │    │ • Giá hiện tại                  │   │
+│   │ • Phân tích quá khứ     │    │ • Volume live                   │   │
+│   │ • Context & tin tức     │    │ • Giao dịch real-time           │   │
+│   └─────────────────────────┘    └─────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+### Real-time Tools Implementation
+
+**File**: `surfsense_backend/app/agents/new_chat/tools/crypto_realtime.py`
+
+| Tool | Mô tả | Use Case |
+|------|-------|----------|
+| `get_live_token_price` | Lấy giá real-time từ DexScreener API | "Giá SOL bây giờ?" |
+| `get_live_token_data` | Lấy full market data (price, volume, txns) | "Volume giao dịch BULLA?" |
+
+**Đặc điểm**:
+- Gọi trực tiếp DexScreener API (không qua indexed data)
+- Không cần dependencies (`requires=[]`)
+- Trả về data với `data_source: "DexScreener API (Real-time)"`
+
+### Khi Nào AI Dùng Tool Nào?
+
+| Query Type | Tool | Ví dụ |
+|------------|------|-------|
+| Giá hiện tại | `get_live_token_price` | "Giá BULLA bây giờ là bao nhiêu?" |
+| Market data live | `get_live_token_data` | "Volume giao dịch SOL thế nào?" |
+| Phân tích lịch sử | `search_knowledge_base` | "BULLA tuần này như thế nào?" |
+| Phân tích tổng hợp | **Cả hai** | "Phân tích BULLA cho tôi" |
+
+### Frontend Tool-UI Components
+
+**Files**:
+- `surfsense_web/components/tool-ui/crypto/live-token-price.tsx`
+- `surfsense_web/components/tool-ui/crypto/live-token-data.tsx`
+
+Các components này render kết quả từ real-time tools trong chat interface với:
+- Badge "Real-time" để phân biệt với RAG data
+- Price change indicators (5m, 1h, 6h, 24h)
+- Transaction activity bar (buys vs sells)
+- Link đến DexScreener chart
+
+---
