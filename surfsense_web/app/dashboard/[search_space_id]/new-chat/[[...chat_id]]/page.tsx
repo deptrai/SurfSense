@@ -39,6 +39,23 @@ import { GeneratePodcastToolUI } from "@/components/tool-ui/generate-podcast";
 import { LinkPreviewToolUI } from "@/components/tool-ui/link-preview";
 import { ScrapeWebpageToolUI } from "@/components/tool-ui/scrape-webpage";
 import { RecallMemoryToolUI, SaveMemoryToolUI } from "@/components/tool-ui/user-memory";
+// Crypto Tool UI Components - Conversational Crypto Advisor
+import {
+	TokenAnalysisToolUI,
+	WatchlistDisplayToolUI,
+	ActionConfirmationToolUI,
+	AlertConfigurationToolUI,
+	ProactiveAlertToolUI,
+	TrendingTokensToolUI,
+	WhaleActivityToolUI,
+	MarketOverviewToolUI,
+	HolderAnalysisToolUI,
+	PortfolioDisplayToolUI,
+	UserProfileToolUI,
+	// Real-time crypto tools (Hybrid approach: RAG + Real-time)
+	LiveTokenPriceToolUI,
+	LiveTokenDataToolUI,
+} from "@/components/tool-ui/crypto";
 import { Spinner } from "@/components/ui/spinner";
 import { useChatSessionStateSync } from "@/hooks/use-chat-session-state";
 import { useMessagesElectric } from "@/hooks/use-messages-electric";
@@ -1458,6 +1475,21 @@ export default function NewChatPage() {
 			<ScrapeWebpageToolUI />
 			<SaveMemoryToolUI />
 			<RecallMemoryToolUI />
+			{/* Crypto Tool UI Components - Conversational Crypto Advisor */}
+			<TokenAnalysisToolUI />
+			<WatchlistDisplayToolUI />
+			<ActionConfirmationToolUI />
+			<AlertConfigurationToolUI />
+			<ProactiveAlertToolUI />
+			<TrendingTokensToolUI />
+			<WhaleActivityToolUI />
+			<MarketOverviewToolUI />
+			<HolderAnalysisToolUI />
+			<PortfolioDisplayToolUI />
+			<UserProfileToolUI />
+			{/* Real-time Crypto Tools - Hybrid approach (RAG + Real-time) */}
+			<LiveTokenPriceToolUI />
+			<LiveTokenDataToolUI />
 			{/* <WriteTodosToolUI /> Disabled for now */}
 			<div className="flex flex-col h-[calc(100vh-64px)] overflow-hidden">
 				<Thread

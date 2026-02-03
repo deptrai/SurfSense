@@ -43,6 +43,10 @@ from typing import Any
 
 from langchain_core.tools import BaseTool
 
+from .crypto_realtime import (
+    create_get_live_token_data_tool,
+    create_get_live_token_price_tool,
+)
 from .display_image import create_display_image_tool
 from .knowledge_base import create_search_knowledge_base_tool
 from .link_preview import create_link_preview_tool
@@ -179,6 +183,26 @@ BUILTIN_TOOLS: list[ToolDefinition] = [
     #     factory=lambda deps: create_my_custom_tool(...),
     #     requires=["search_space_id"],
     # ),
+    # =========================================================================
+    # CRYPTO REAL-TIME TOOLS - Hybrid approach (RAG + Real-time)
+    # =========================================================================
+    # These tools fetch LIVE data directly from DexScreener API.
+    # Use alongside search_knowledge_base for comprehensive crypto analysis:
+    # - search_knowledge_base: Historical context, trends (from indexed data)
+    # - get_live_token_price: Current price (real-time API call)
+    # - get_live_token_data: Full market data (real-time API call)
+    ToolDefinition(
+        name="get_live_token_price",
+        description="Get LIVE/CURRENT cryptocurrency price from DexScreener API. Use for real-time price queries.",
+        factory=lambda deps: create_get_live_token_price_tool(),
+        requires=[],
+    ),
+    ToolDefinition(
+        name="get_live_token_data",
+        description="Get comprehensive LIVE market data (price, volume, liquidity, transactions) from DexScreener API.",
+        factory=lambda deps: create_get_live_token_data_tool(),
+        requires=[],
+    ),
 ]
 
 
