@@ -8,6 +8,9 @@ import type { WatchlistToken, WatchlistAlert } from "../crypto/WatchlistPanel";
 import type { SafetyFactor } from "../crypto/SafetyScoreDisplay";
 import type { AlertConfig } from "../crypto/AlertConfigModal";
 import type { WhaleTransaction } from "../whale/WhaleActivityFeed";
+import type { TokenAnalysisData } from "../analysis/TokenAnalysisPanel";
+import type { TradingSuggestion } from "../analysis/TradingSuggestionPanel";
+import type { PortfolioData } from "../portfolio/PortfolioPanel";
 
 // ============================================
 // MOCK TOKEN DATA (DexScreener)
@@ -301,6 +304,248 @@ export const MOCK_WHALE_TRANSACTIONS: WhaleTransaction[] = [
         isInWatchlist: false,
     },
 ];
+
+// ============================================
+// MOCK TOKEN ANALYSIS
+// ============================================
+
+export const MOCK_TOKEN_ANALYSIS: TokenAnalysisData = {
+    tokenAddress: "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+    tokenSymbol: "BULLA",
+    tokenName: "Bulla Token",
+    chain: "solana",
+    timestamp: new Date(),
+
+    contract: {
+        verified: true,
+        renounced: true,
+        isProxy: false,
+        sourceCode: true,
+    },
+
+    holders: {
+        count: 1234,
+        top10Percent: 35,
+        distribution: [
+            { address: "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU", percent: 8.5 },
+            { address: "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263", percent: 6.2 },
+            { address: "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm", percent: 5.8 },
+        ],
+    },
+
+    liquidity: {
+        totalUSD: 50000,
+        lpLocked: true,
+        lpLockDuration: 90,
+        liquidityMcapRatio: 0.15,
+    },
+
+    volume: {
+        volume24h: 100000,
+        trend: "increasing",
+        volumeLiquidityRatio: 2.0,
+    },
+
+    price: {
+        current: 0.0001234,
+        ath: 0.0005,
+        atl: 0.00001,
+        change7d: 15.5,
+        change30d: 45.2,
+        volatility: 12.5,
+    },
+
+    social: {
+        twitterMentions: 500,
+        telegramActivity: 1200,
+        redditDiscussions: 45,
+        sentimentScore: 0.75,
+        sentiment: "positive",
+    },
+
+    aiSummary: "BULLA shows strong holder distribution with verified contract and renounced ownership. Volume increasing 200% in 24h with locked liquidity for 90 days. Social sentiment is highly positive with growing community engagement. Moderate risk profile with good upside potential.",
+    recommendation: "buy",
+    confidence: 75,
+};
+
+// ============================================
+// MOCK TRADING SUGGESTION
+// ============================================
+
+export const MOCK_TRADING_SUGGESTION: TradingSuggestion = {
+    tokenAddress: "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+    tokenSymbol: "BULLA",
+    tokenName: "Bulla Token",
+    chain: "solana",
+    currentPrice: 0.0001234,
+    timestamp: new Date(),
+
+    entry: {
+        min: 0.0001100,
+        max: 0.0001250,
+        reasoning: "Strong support zone at 0.00011 with high volume. Current price offers good risk/reward entry.",
+    },
+
+    targets: [
+        {
+            level: 1,
+            price: 0.0001800,
+            percentGain: 45.8,
+            confidence: 85,
+        },
+        {
+            level: 2,
+            price: 0.0002500,
+            percentGain: 102.6,
+            confidence: 70,
+        },
+        {
+            level: 3,
+            price: 0.0003500,
+            percentGain: 183.7,
+            confidence: 50,
+        },
+    ],
+
+    stopLoss: {
+        price: 0.0000950,
+        percentLoss: -23.0,
+        reasoning: "Below key support level. Invalidates bullish structure if broken.",
+    },
+
+    riskReward: 3.2,
+    overallConfidence: 78,
+
+    technicalLevels: {
+        support: [0.0001100, 0.0000950, 0.0000800],
+        resistance: [0.0001800, 0.0002500, 0.0003500],
+    },
+
+    reasoning: [
+        "Strong accumulation pattern forming on 4H chart",
+        "Volume profile shows increasing buyer interest",
+        "RSI showing bullish divergence at support",
+        "Whale wallets accumulating over past 48 hours",
+        "Social sentiment turning positive with growing community",
+    ],
+
+    invalidationConditions: [
+        "Break below 0.000095 with high volume",
+        "Sudden large holder dumping (>5% supply)",
+        "Liquidity removal or unlock event",
+        "Negative news or security concerns",
+    ],
+};
+
+// ============================================
+// MOCK PORTFOLIO DATA
+// ============================================
+
+export const MOCK_PORTFOLIO: PortfolioData = {
+    wallets: [
+        {
+            address: "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+            chain: "solana",
+            type: "phantom",
+        },
+        {
+            address: "0x6982508145454Ce325dDbE47a25d4ec3d2311933",
+            chain: "ethereum",
+            type: "metamask",
+        },
+    ],
+
+    totalValue: 12450.50,
+    change24h: 850.25,
+    change24hPercent: 7.33,
+
+    holdings: [
+        {
+            tokenAddress: "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+            chain: "solana",
+            symbol: "BULLA",
+            name: "Bulla Token",
+            amount: "8,100,000",
+            currentPrice: 0.0001234,
+            currentValue: 1000.00,
+            change24h: 150.00,
+            change24hPercent: 17.65,
+            entryPrice: 0.0001000,
+            pnl: 189.54,
+            pnlPercent: 23.4,
+        },
+        {
+            tokenAddress: "So11111111111111111111111111111111111111112",
+            chain: "solana",
+            symbol: "SOL",
+            name: "Solana",
+            amount: "50",
+            currentPrice: 100.50,
+            currentValue: 5025.00,
+            change24h: 250.00,
+            change24hPercent: 5.24,
+            entryPrice: 95.00,
+            pnl: 275.00,
+            pnlPercent: 5.79,
+        },
+        {
+            tokenAddress: "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+            chain: "solana",
+            symbol: "BONK",
+            name: "Bonk",
+            amount: "2,300,000,000",
+            currentPrice: 0.00001500,
+            currentValue: 3450.00,
+            change24h: -125.00,
+            change24hPercent: -3.50,
+            entryPrice: 0.00001200,
+            pnl: 690.00,
+            pnlPercent: 25.0,
+        },
+        {
+            tokenAddress: "0x6982508145454Ce325dDbE47a25d4ec3d2311933",
+            chain: "ethereum",
+            symbol: "PEPE",
+            name: "Pepe",
+            amount: "23,000,000,000",
+            currentPrice: 0.00000012,
+            currentValue: 2760.00,
+            change24h: 180.00,
+            change24hPercent: 6.98,
+            entryPrice: 0.00000010,
+            pnl: 460.00,
+            pnlPercent: 20.0,
+        },
+        {
+            tokenAddress: "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+            chain: "solana",
+            symbol: "WIF",
+            name: "dogwifhat",
+            amount: "100",
+            currentPrice: 2.15,
+            currentValue: 215.50,
+            change24h: -15.50,
+            change24hPercent: -6.71,
+            entryPrice: 2.50,
+            pnl: -35.00,
+            pnlPercent: -14.0,
+        },
+    ],
+
+    analytics: {
+        bestPerformer: {
+            symbol: "BONK",
+            change: 25.0,
+        },
+        worstPerformer: {
+            symbol: "WIF",
+            change: -14.0,
+        },
+        winRate: 80,
+        avgHoldTime: 14,
+        totalTrades: 25,
+    },
+};
 
 // ============================================
 // MOCK ALERT CONFIGS
