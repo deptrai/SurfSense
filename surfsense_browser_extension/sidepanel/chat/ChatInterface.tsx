@@ -14,6 +14,9 @@ import {
     MOCK_SAFETY_SCORE,
     MOCK_SAFETY_FACTORS,
     MOCK_SAFETY_SOURCES,
+    MOCK_WHALE_TRANSACTIONS,
+    MOCK_TRADING_SUGGESTION,
+    MOCK_PORTFOLIO,
 } from "../mock/mockData";
 import { SafetyScoreDisplay } from "../crypto/SafetyScoreDisplay";
 import { WatchlistPanel } from "../crypto/WatchlistPanel";
@@ -26,12 +29,24 @@ type ViewMode = "chat" | "watchlist" | "safety";
  * Natural language command patterns for conversational UX
  */
 const COMMAND_PATTERNS = {
+    // Epic 1: Basic commands
     ADD_WATCHLIST: /add\s+(\w+)\s+to\s+(my\s+)?watchlist/i,
     REMOVE_WATCHLIST: /remove\s+(\w+)\s+from\s+(my\s+)?watchlist/i,
     SHOW_WATCHLIST: /(show|display|view)\s+(my\s+)?watchlist/i,
     SET_ALERT: /set\s+alert\s+(if|when)\s+(\w+)\s+(drops?|pumps?|reaches?|changes?)\s+(\d+)%?/i,
     ANALYZE_TOKEN: /(analyze|research|check)\s+(\w+)/i,
     SAFETY_CHECK: /(is\s+)?(\w+)\s+(safe|risky|rug)/i,
+
+    // Epic 2: Smart Monitoring & Alerts
+    SHOW_WHALE_ACTIVITY: /(show|display|view)\s+(whale|large)\s+(activity|transactions|trades)/i,
+
+    // Epic 3: Trading Intelligence
+    TRADING_SUGGESTION: /(suggest|recommend|entry|exit|trade)\s+(for\s+)?(\w+)/i,
+    SHOW_PORTFOLIO: /(show|display|view)\s+(my\s+)?portfolio/i,
+
+    // Epic 4: Content Creation & Productivity
+    CAPTURE_CHART: /(capture|screenshot|snap|grab)\s+(chart|graph)/i,
+    GENERATE_THREAD: /(generate|create|write)\s+(thread|tweet)/i,
 };
 
 /**
@@ -110,6 +125,11 @@ export function ChatInterface() {
             const addWatchlistMatch = content.match(COMMAND_PATTERNS.ADD_WATCHLIST);
             const showWatchlistMatch = content.match(COMMAND_PATTERNS.SHOW_WATCHLIST);
             const setAlertMatch = content.match(COMMAND_PATTERNS.SET_ALERT);
+            const showWhaleActivityMatch = content.match(COMMAND_PATTERNS.SHOW_WHALE_ACTIVITY);
+            const tradingSuggestionMatch = content.match(COMMAND_PATTERNS.TRADING_SUGGESTION);
+            const showPortfolioMatch = content.match(COMMAND_PATTERNS.SHOW_PORTFOLIO);
+            const captureChartMatch = content.match(COMMAND_PATTERNS.CAPTURE_CHART);
+            const generateThreadMatch = content.match(COMMAND_PATTERNS.GENERATE_THREAD);
 
             if (addWatchlistMatch || content.toLowerCase().includes("add") && content.toLowerCase().includes("watchlist")) {
                 // Add to watchlist command
@@ -206,6 +226,58 @@ export function ChatInterface() {
                     isInWatchlist: isInWatchlist,
                 };
                 responseContent += `\n\nBased on your moderate risk profile, suggested allocation: 2-5% of portfolio. The safety score of ${MOCK_SAFETY_SCORE}/100 indicates medium risk - proceed with caution.`;
+            } else if (showWhaleActivityMatch || (content.toLowerCase().includes("whale") && (content.toLowerCase().includes("show") || content.toLowerCase().includes("activity")))) {
+                // Show whale activity command (Epic 2)
+                responseContent = `Here's recent whale activity for ${tokenSymbol}:`;
+                widget = {
+                    type: "whale_activity",
+                    transactions: MOCK_WHALE_TRANSACTIONS.slice(0, 5), // Show top 5
+                };
+                responseContent += `\n\n🐋 I'm tracking 5 large transactions (>$10K) in the last hour. The smart money wallet 0x742d...35BA just bought $50K worth - this could be a bullish signal!`;
+            } else if (tradingSuggestionMatch || (content.toLowerCase().includes("suggest") || content.toLowerCase().includes("entry") || content.toLowerCase().includes("exit"))) {
+                // Trading suggestion command (Epic 3)
+                const token = tradingSuggestionMatch?.[3] || tokenSymbol;
+                responseContent = `Here's my trading analysis for ${token}:`;
+                widget = {
+                    type: "trading_suggestion",
+                    suggestion: MOCK_TRADING_SUGGESTION,
+                };
+                responseContent += `\n\n📊 Based on technical analysis, I've identified optimal entry zones and profit targets. The risk/reward ratio of 1:3.3 looks favorable. Would you like me to set price alerts for these levels?`;
+            } else if (showPortfolioMatch || (content.toLowerCase().includes("portfolio") && (content.toLowerCase().includes("show") || content.toLowerCase().includes("view")))) {
+                // Show portfolio command (Epic 3)
+                responseContent = `Here's your portfolio overview:`;
+                widget = {
+                    type: "portfolio",
+                    portfolio: MOCK_PORTFOLIO,
+                };
+                responseContent += `\n\n💼 Your portfolio is up $234 (4.7%) in the last 24 hours! BULLA is your best performer at +15%. Want me to analyze if it's time to take profits?`;
+            } else if (captureChartMatch || (content.toLowerCase().includes("capture") || content.toLowerCase().includes("screenshot")) && content.toLowerCase().includes("chart")) {
+                // Capture chart command (Epic 4)
+                responseContent = `I'll help you capture this chart:`;
+                widget = {
+                    type: "chart_capture",
+                    metadata: {
+                        tokenSymbol: tokenSymbol,
+                        tokenName: context?.tokenData?.tokenName || "Bulla Token",
+                        chain: context?.tokenData?.chain || "solana",
+                        price: context?.tokenData?.price || "$0.00001234",
+                        priceChange24h: 156.7,
+                        volume24h: context?.tokenData?.volume24h || "$1.2M",
+                        liquidity: context?.tokenData?.liquidity || "$450K",
+                        timestamp: new Date(),
+                    },
+                };
+                responseContent += `\n\n📸 I've prepared the chart capture tool with auto-filled metadata. Choose your style (dark/light/neon) and export format (Twitter/Telegram/Instagram). The metadata overlay will make your chart look professional!`;
+            } else if (generateThreadMatch || (content.toLowerCase().includes("generate") || content.toLowerCase().includes("create")) && content.toLowerCase().includes("thread")) {
+                // Generate thread command (Epic 4)
+                responseContent = `I'll help you create a Twitter thread about ${tokenSymbol}:`;
+                widget = {
+                    type: "thread_generator",
+                    tokenAddress: context?.tokenData?.pairAddress,
+                    tokenSymbol: tokenSymbol,
+                    chain: context?.tokenData?.chain || "solana",
+                };
+                responseContent += `\n\n🧵 I've prepared the thread generator with token info auto-filled. Choose your tone (bullish/neutral/bearish) and thread length (5-10 tweets). I'll generate a professional thread structure: Hook → Analysis → Implications → Conclusion. You can edit each tweet before posting!`;
             } else if (content.toLowerCase().includes("holder")) {
                 responseContent = `**Holder Analysis for ${tokenSymbol}:**
 
@@ -224,11 +296,23 @@ The top holder owns 8.5% which is relatively high.`;
             } else {
                 responseContent = `I can help you with crypto analysis! Try these commands:
 
+**Epic 1: Basic Commands**
 • **"Add BULLA to my watchlist"** - Track tokens
 • **"Show my watchlist"** - View tracked tokens
 • **"Set alert if BULLA drops 20%"** - Price alerts
 • **"Analyze BULLA"** - Full token analysis
 • **"Is BULLA safe?"** - Safety check
+
+**Epic 2: Smart Monitoring**
+• **"Show whale activity"** - Large transactions (>$10K)
+
+**Epic 3: Trading Intelligence**
+• **"Suggest entry for BULLA"** - Entry/exit suggestions
+• **"Show my portfolio"** - Portfolio tracker with P&L
+
+**Epic 4: Content Creation**
+• **"Capture chart"** - Screenshot with metadata
+• **"Generate thread"** - AI Twitter thread generator
 
 What would you like to know?`;
             }
