@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { MOCK_TOKEN_DATA, MOCK_MODE } from "../mock/mockData";
 
 /**
  * Page context types
@@ -9,9 +10,12 @@ export interface TokenData {
     chain: string;
     pairAddress: string;
     tokenSymbol?: string;
+    tokenName?: string;
     price?: string;
+    priceChange24h?: number;
     volume24h?: string;
     liquidity?: string;
+    marketCap?: string;
 }
 
 export interface PageContext {
@@ -24,11 +28,14 @@ export interface PageContext {
 interface PageContextValue {
     context: PageContext | null;
     updateContext: (context: PageContext) => void;
+    /** Whether we're using mock data */
+    isMockMode: boolean;
 }
 
 const PageContextContext = createContext<PageContextValue>({
     context: null,
     updateContext: () => { },
+    isMockMode: false,
 });
 
 export function usePageContext() {
@@ -38,11 +45,24 @@ export function usePageContext() {
 /**
  * Provider for page context detection
  * Listens to messages from content scripts
+ * Uses mock data in development mode
  */
 export function PageContextProvider({ children }: { children: ReactNode }) {
     const [context, setContext] = useState<PageContext | null>(null);
+    const isMockMode = MOCK_MODE.enabled;
 
     useEffect(() => {
+        // Use mock data in development mode
+        if (MOCK_MODE.enabled && MOCK_MODE.simulateDexScreener) {
+            setContext({
+                url: "https://dexscreener.com/solana/7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+                title: "BULLA / SOL | DEX Screener",
+                pageType: "dexscreener",
+                tokenData: MOCK_TOKEN_DATA,
+            });
+            return;
+        }
+
         // Listen for page context updates from content script
         const handleMessage = (message: any) => {
             if (message.type === "PAGE_CONTEXT_UPDATE") {
@@ -65,7 +85,7 @@ export function PageContextProvider({ children }: { children: ReactNode }) {
     }, []);
 
     return (
-        <PageContextContext.Provider value={{ context, updateContext: setContext }}>
+        <PageContextContext.Provider value={{ context, updateContext: setContext, isMockMode }}>
             {children}
         </PageContextContext.Provider>
     );

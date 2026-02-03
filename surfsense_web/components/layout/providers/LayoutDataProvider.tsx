@@ -2,7 +2,7 @@
 
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useAtomValue, useSetAtom } from "jotai";
-import { Inbox, LogOut, SquareLibrary, Trash2 } from "lucide-react";
+import { Coins, Inbox, LogOut, SquareLibrary, Trash2 } from "lucide-react";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
@@ -240,6 +240,12 @@ export function LayoutDataProvider({
 				url: `/dashboard/${searchSpaceId}/documents`,
 				icon: SquareLibrary,
 				isActive: pathname?.includes("/documents"),
+			},
+			{
+				title: "Crypto",
+				url: `/dashboard/${searchSpaceId}/crypto`,
+				icon: Coins,
+				isActive: pathname?.includes("/crypto"),
 			},
 		],
 		[searchSpaceId, pathname, isInboxSidebarOpen, totalUnreadCount]

@@ -11,7 +11,17 @@
 	"pnpm": {
 		"overrides": {
 			"sharp": "^0.33.5"
-		}
+		},
+		"ignoredBuiltDependencies": [
+			"@swc/core",
+			"esbuild",
+			"lmdb",
+			"msgpackr-extract",
+			"sharp"
+		],
+		"onlyBuiltDependencies": [
+			"@parcel/watcher"
+		]
 	},
 	"scripts": {
 		"dev": "plasmo dev",
