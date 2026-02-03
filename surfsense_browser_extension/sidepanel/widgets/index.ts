@@ -7,3 +7,14 @@ export { WatchlistWidget, type WatchlistWidgetProps, type WatchlistItem } from "
 export { AlertWidget, type AlertWidgetProps, type AlertConfigData } from "./AlertWidget";
 export { TokenAnalysisWidget, type TokenAnalysisWidgetProps, type TokenAnalysisData } from "./TokenAnalysisWidget";
 
+// Epic 2: Smart Monitoring & Alerts
+export { WhaleActivityWidget, type WhaleActivityWidgetProps } from "./WhaleActivityWidget";
+
+// Epic 3: Trading Intelligence
+export { TradingSuggestionWidget, type TradingSuggestionWidgetProps } from "./TradingSuggestionWidget";
+export { PortfolioWidget, type PortfolioWidgetProps } from "./PortfolioWidget";
+
+// Epic 4: Content Creation & Productivity
+export { ChartCaptureWidget, type ChartCaptureWidgetProps } from "./ChartCaptureWidget";
+export { ThreadGeneratorWidget, type ThreadGeneratorWidgetProps } from "./ThreadGeneratorWidget";
+

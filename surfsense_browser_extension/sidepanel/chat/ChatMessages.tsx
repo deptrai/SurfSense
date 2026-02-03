@@ -6,11 +6,20 @@ import {
     WatchlistWidget,
     AlertWidget,
     TokenAnalysisWidget,
+    WhaleActivityWidget,
+    TradingSuggestionWidget,
+    PortfolioWidget,
+    ChartCaptureWidget,
+    ThreadGeneratorWidget,
     type ProactiveAlertData,
     type WatchlistItem,
     type AlertConfigData,
     type TokenAnalysisData,
 } from "../widgets";
+import type { WhaleTransaction } from "../whale/WhaleActivityFeed";
+import type { TradingSuggestion } from "../analysis/TradingSuggestionPanel";
+import type { PortfolioData } from "../portfolio/PortfolioPanel";
+import type { ChartCaptureMetadata } from "../capture/ChartCapturePanel";
 
 // Widget types that can be embedded in messages
 export type MessageWidget =
@@ -18,7 +27,12 @@ export type MessageWidget =
     | { type: "proactive_alert"; alert: ProactiveAlertData; recommendation?: string }
     | { type: "watchlist"; tokens: WatchlistItem[] }
     | { type: "alert_config"; config: AlertConfigData; isNew?: boolean }
-    | { type: "token_analysis"; data: TokenAnalysisData; isInWatchlist?: boolean };
+    | { type: "token_analysis"; data: TokenAnalysisData; isInWatchlist?: boolean }
+    | { type: "whale_activity"; transactions: WhaleTransaction[] }
+    | { type: "trading_suggestion"; suggestion: TradingSuggestion }
+    | { type: "portfolio"; portfolio: PortfolioData }
+    | { type: "chart_capture"; metadata?: ChartCaptureMetadata }
+    | { type: "thread_generator"; tokenAddress?: string; tokenSymbol?: string; chain?: string };
 
 export interface Message {
     id: string;
@@ -48,6 +62,11 @@ export interface ChatMessagesProps {
  * - WatchlistWidget: Inline watchlist display
  * - AlertWidget: Alert configuration display
  * - TokenAnalysisWidget: Full token analysis
+ * - WhaleActivityWidget: Whale transaction feed (Epic 2)
+ * - TradingSuggestionWidget: Entry/exit suggestions (Epic 3)
+ * - PortfolioWidget: Portfolio tracker (Epic 3)
+ * - ChartCaptureWidget: Chart screenshot tool (Epic 4)
+ * - ThreadGeneratorWidget: Twitter thread generator (Epic 4)
  */
 export function ChatMessages({
     messages,
@@ -120,6 +139,51 @@ export function ChatMessages({
                         onAddToWatchlist={() => handleWidgetAction("add_to_watchlist", widget.data)}
                         onSetAlert={() => handleWidgetAction("set_alert", widget.data.symbol)}
                         onAnalyzeFurther={() => handleWidgetAction("analyze_further", widget.data)}
+                    />
+                );
+            case "whale_activity":
+                return (
+                    <WhaleActivityWidget
+                        transactions={widget.transactions}
+                        onTrackWallet={(address) => handleWidgetAction("track_wallet", address)}
+                        onViewTransaction={(txHash) => handleWidgetAction("view_transaction", txHash)}
+                    />
+                );
+            case "trading_suggestion":
+                return (
+                    <TradingSuggestionWidget
+                        suggestion={widget.suggestion}
+                        onSetAlerts={() => handleWidgetAction("set_alerts", widget.suggestion)}
+                        onViewChart={() => handleWidgetAction("view_chart", widget.suggestion)}
+                    />
+                );
+            case "portfolio":
+                return (
+                    <PortfolioWidget
+                        portfolio={widget.portfolio}
+                        onRefresh={() => handleWidgetAction("refresh_portfolio")}
+                        onAnalyzeToken={(holding) => handleWidgetAction("analyze_token", holding)}
+                        onSetAlert={(holding) => handleWidgetAction("set_alert", holding)}
+                        onViewToken={(holding) => handleWidgetAction("view_token", holding)}
+                        onAddPosition={() => handleWidgetAction("add_position")}
+                    />
+                );
+            case "chart_capture":
+                return (
+                    <ChartCaptureWidget
+                        metadata={widget.metadata}
+                        onCapture={() => handleWidgetAction("capture_chart")}
+                        onExport={(format) => handleWidgetAction("export_chart", format)}
+                    />
+                );
+            case "thread_generator":
+                return (
+                    <ThreadGeneratorWidget
+                        tokenAddress={widget.tokenAddress}
+                        tokenSymbol={widget.tokenSymbol}
+                        chain={widget.chain}
+                        onGenerate={(request) => handleWidgetAction("generate_thread", request)}
+                        onExport={(format) => handleWidgetAction("export_thread", format)}
                     />
                 );
             default:
