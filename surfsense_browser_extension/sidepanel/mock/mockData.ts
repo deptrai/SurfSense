@@ -7,6 +7,7 @@ import type { TokenData } from "../context/PageContextProvider";
 import type { WatchlistToken, WatchlistAlert } from "../crypto/WatchlistPanel";
 import type { SafetyFactor } from "../crypto/SafetyScoreDisplay";
 import type { AlertConfig } from "../crypto/AlertConfigModal";
+import type { WhaleTransaction } from "../whale/WhaleActivityFeed";
 
 // ============================================
 // MOCK TOKEN DATA (DexScreener)
@@ -193,6 +194,111 @@ export const MOCK_WATCHLIST_ALERTS: WatchlistAlert[] = [
         message: "DEGEN dropped below $0.02 (-15%)",
         timestamp: new Date(Date.now() - 1000 * 60 * 120), // 2 hours ago
         isRead: true,
+    },
+];
+
+// ============================================
+// MOCK WHALE TRANSACTIONS
+// ============================================
+
+export const MOCK_WHALE_TRANSACTIONS: WhaleTransaction[] = [
+    {
+        id: "whale-1",
+        tokenSymbol: "BULLA",
+        tokenName: "Bulla Token",
+        chain: "solana",
+        type: "buy",
+        amountUSD: 100000,
+        amountTokens: "8.1B",
+        walletAddress: "7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU",
+        txHash: "5Kn8WqXZKqYqKqYqKqYqKqYqKqYqKqYqKqYqKqYqKqYq",
+        timestamp: new Date(Date.now() - 1000 * 60 * 2), // 2 mins ago
+        isSmartMoney: true,
+        isInWatchlist: true,
+    },
+    {
+        id: "whale-2",
+        tokenSymbol: "BONK",
+        tokenName: "Bonk",
+        chain: "solana",
+        type: "sell",
+        amountUSD: 50000,
+        amountTokens: "2.3B",
+        walletAddress: "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+        txHash: "3Hn7WpXZKpYpKpYpKpYpKpYpKpYpKpYpKpYpKpYpKpYp",
+        timestamp: new Date(Date.now() - 1000 * 60 * 5), // 5 mins ago
+        isSmartMoney: false,
+        isInWatchlist: true,
+    },
+    {
+        id: "whale-3",
+        tokenSymbol: "PEPE",
+        tokenName: "Pepe",
+        chain: "ethereum",
+        type: "buy",
+        amountUSD: 250000,
+        amountTokens: "23B",
+        walletAddress: "0x6982508145454Ce325dDbE47a25d4ec3d2311933",
+        txHash: "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef",
+        timestamp: new Date(Date.now() - 1000 * 60 * 10), // 10 mins ago
+        isSmartMoney: true,
+        isInWatchlist: true,
+    },
+    {
+        id: "whale-4",
+        tokenSymbol: "WIF",
+        tokenName: "dogwifhat",
+        chain: "solana",
+        type: "buy",
+        amountUSD: 75000,
+        amountTokens: "30.6K",
+        walletAddress: "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
+        txHash: "4Jm6VoXYJoXoJoXoJoXoJoXoJoXoJoXoJoXoJoXoJoXo",
+        timestamp: new Date(Date.now() - 1000 * 60 * 15), // 15 mins ago
+        isSmartMoney: false,
+        isInWatchlist: true,
+    },
+    {
+        id: "whale-5",
+        tokenSymbol: "DEGEN",
+        tokenName: "Degen",
+        chain: "base",
+        type: "sell",
+        amountUSD: 35000,
+        amountTokens: "2.2M",
+        walletAddress: "0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed",
+        txHash: "0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890",
+        timestamp: new Date(Date.now() - 1000 * 60 * 20), // 20 mins ago
+        isSmartMoney: false,
+        isInWatchlist: true,
+    },
+    {
+        id: "whale-6",
+        tokenSymbol: "SOL",
+        tokenName: "Solana",
+        chain: "solana",
+        type: "buy",
+        amountUSD: 500000,
+        amountTokens: "5K",
+        walletAddress: "So11111111111111111111111111111111111111112",
+        txHash: "6Lp7XqYZLqZqLqZqLqZqLqZqLqZqLqZqLqZqLqZqLqZq",
+        timestamp: new Date(Date.now() - 1000 * 60 * 30), // 30 mins ago
+        isSmartMoney: true,
+        isInWatchlist: false,
+    },
+    {
+        id: "whale-7",
+        tokenSymbol: "MATIC",
+        tokenName: "Polygon",
+        chain: "ethereum",
+        type: "buy",
+        amountUSD: 150000,
+        amountTokens: "200K",
+        walletAddress: "0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0",
+        txHash: "0xfedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321",
+        timestamp: new Date(Date.now() - 1000 * 60 * 45), // 45 mins ago
+        isSmartMoney: false,
+        isInWatchlist: false,
     },
 ];
 
