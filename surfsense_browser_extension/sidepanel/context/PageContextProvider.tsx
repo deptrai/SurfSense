@@ -23,6 +23,8 @@ export interface PageContext {
     title: string;
     pageType: PageType;
     tokenData?: TokenData;
+    /** Detected tokens from page content (Twitter mentions, addresses, pairs) */
+    detectedTokens?: TokenData[];
 }
 
 interface PageContextValue {

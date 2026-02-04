@@ -21,7 +21,9 @@ import {
 import { SafetyScoreDisplay } from "../crypto/SafetyScoreDisplay";
 import { WatchlistPanel } from "../crypto/WatchlistPanel";
 import { AlertConfigModal } from "../crypto/AlertConfigModal";
+import { DetectedTokensList } from "../components/DetectedTokensList";
 import type { WatchlistItem } from "../widgets";
+import type { TokenData } from "../context/PageContextProvider";
 
 type ViewMode = "chat" | "watchlist" | "safety";
 
@@ -471,6 +473,14 @@ What would you like to know?`;
         }, 500);
     };
 
+    /**
+     * Handle detected token click
+     */
+    const handleDetectedTokenClick = (token: TokenData) => {
+        const query = token.tokenSymbol || token.pairAddress;
+        handleTokenSearch(query);
+    };
+
     return (
         <div className="flex flex-col h-full">
             {/* Header with space selector and settings */}
@@ -492,6 +502,14 @@ What would you like to know?`;
                     onAddToWatchlist={handleAddToWatchlist}
                     onSafetyCheck={handleSafetyCheck}
                     onRugCheck={handleRugCheck}
+                />
+            )}
+
+            {/* Detected tokens list (on Twitter and other pages) */}
+            {context?.detectedTokens && context.detectedTokens.length > 0 && viewMode === "chat" && (
+                <DetectedTokensList
+                    tokens={context.detectedTokens}
+                    onTokenClick={handleDetectedTokenClick}
                 />
             )}
 
