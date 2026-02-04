@@ -7,6 +7,17 @@ chrome.sidePanel
 	.setPanelBehavior({ openPanelOnActionClick: true })
 	.catch((error) => console.error("Failed to set side panel behavior:", error));
 
+// Listen for messages from content scripts
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+	if (message.type === "OPEN_SIDEPANEL") {
+		// Open sidepanel for the current tab
+		if (sender.tab?.id) {
+			chrome.sidePanel.open({ tabId: sender.tab.id })
+				.catch((error) => console.error("Failed to open side panel:", error));
+		}
+	}
+});
+
 chrome.tabs.onCreated.addListener(async (tab: any) => {
 	try {
 		await initWebHistory(tab.id);
