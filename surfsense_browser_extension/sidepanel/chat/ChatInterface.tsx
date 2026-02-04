@@ -131,7 +131,7 @@ export function ChatInterface() {
             const captureChartMatch = content.match(COMMAND_PATTERNS.CAPTURE_CHART);
             const generateThreadMatch = content.match(COMMAND_PATTERNS.GENERATE_THREAD);
 
-            if (addWatchlistMatch || content.toLowerCase().includes("add") && content.toLowerCase().includes("watchlist")) {
+            if (addWatchlistMatch || (content.toLowerCase().includes("add") && content.toLowerCase().includes("watchlist"))) {
                 // Add to watchlist command
                 const token = addWatchlistMatch?.[1] || tokenSymbol;
                 responseContent = `Done! ✅\n\nI've added ${token} to your watchlist.`;
