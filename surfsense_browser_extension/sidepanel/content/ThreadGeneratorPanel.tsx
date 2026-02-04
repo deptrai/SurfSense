@@ -189,39 +189,39 @@ export function ThreadGeneratorPanel({
             </div>
 
             {/* Content */}
-            <div className=\"flex-1 overflow-y-auto p-4 space-y-4\">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
                 {!generatedThread ? (
                     <>
                         {/* Input Form */}
-                        <div className=\"space-y-3\">
+                        <div className="space-y-3">
                             {/* Token Info */}
-                            <div className=\"space-y-2\">
-                                <label className=\"text-sm font-medium\">Token</label>
-                                <div className=\"flex items-center gap-2 p-2 bg-muted/50 rounded\">
-                                    <span className=\"font-semibold\">{request.tokenSymbol || \"Not selected\"}</span>
-                                    {request.chain && <ChainIcon chain={request.chain} size=\"xs\" />}
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium">Token</label>
+                                <div className="flex items-center gap-2 p-2 bg-muted/50 rounded">
+                                    <span className="font-semibold">{request.tokenSymbol || "Not selected"}</span>
+                                    {request.chain && <ChainIcon chain={request.chain} size="xs" />}
                                 </div>
                             </div>
 
                             {/* Topic */}
-                            <div className=\"space-y-2\">
-                                <label className=\"text-sm font-medium\">Topic (Optional)</label>
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium">Topic (Optional)</label>
                                 <input
-                                    type=\"text\"
-                                    placeholder=\"Auto-generate from token data\"
+                                    type="text"
+                                    placeholder="Auto-generate from token data"
                                     value={request.topic}
                                     onChange={(e) => setRequest({ ...request, topic: e.target.value })}
-                                    className=\"w-full p-2 text-sm border rounded\"
+                                    className="w-full p-2 text-sm border rounded"
                                 />
                             </div>
 
                             {/* Length */}
-                            <div className=\"space-y-2\">
-                                <label className=\"text-sm font-medium\">Length</label>
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium">Length</label>
                                 <select
                                     value={request.length}
                                     onChange={(e) => setRequest({ ...request, length: parseInt(e.target.value) })}
-                                    className=\"w-full p-2 text-sm border rounded\"
+                                    className="w-full p-2 text-sm border rounded"
                                 >
                                     {[5, 6, 7, 8, 9, 10].map((len) => (
                                         <option key={len} value={len}>
@@ -232,17 +232,17 @@ export function ThreadGeneratorPanel({
                             </div>
 
                             {/* Tone */}
-                            <div className=\"space-y-2\">
-                                <label className=\"text-sm font-medium\">Tone</label>
-                                <div className=\"flex gap-2\">
-                                    {([\"bullish\", \"neutral\", \"bearish\"] as const).map((tone) => (
+                            <div className="space-y-2">
+                                <label className="text-sm font-medium">Tone</label>
+                                <div className="flex gap-2">
+                                    {(["bullish", "neutral", "bearish"] as const).map((tone) => (
                                         <button
                                             key={tone}
                                             className={cn(
-                                                \"flex-1 p-2 rounded border text-xs font-medium transition-colors\",
+                                                "flex-1 p-2 rounded border text-xs font-medium transition-colors",
                                                 request.tone === tone
-                                                    ? \"bg-primary text-primary-foreground border-primary\"
-                                                    : \"bg-muted hover:bg-muted/80\"
+                                                    ? "bg-primary text-primary-foreground border-primary"
+                                                    : "bg-muted hover:bg-muted/80"
                                             )}
                                             onClick={() => setRequest({ ...request, tone })}
                                         >
@@ -255,58 +255,58 @@ export function ThreadGeneratorPanel({
 
                         {/* Generate Button */}
                         <Button
-                            variant=\"default\"
-                            className=\"w-full\"
+                            variant="default"
+                            className="w-full"
                             onClick={handleGenerate}
                             disabled={isGenerating || !request.tokenSymbol}
                         >
-                            <Sparkles className=\"h-4 w-4 mr-2\" />
-                            {isGenerating ? \"Generating...\" : \"Generate Thread\"}
+                            <Sparkles className="h-4 w-4 mr-2" />
+                            {isGenerating ? "Generating..." : "Generate Thread"}
                         </Button>
                     </>
                 ) : (
                     <>
                         {/* Generated Thread Preview */}
-                        <div className=\"space-y-3\">
-                            <div className=\"flex items-center justify-between\">
-                                <h3 className=\"font-semibold text-sm\">Preview</h3>
+                        <div className="space-y-3">
+                            <div className="flex items-center justify-between">
+                                <h3 className="font-semibold text-sm">Preview</h3>
                                 <Button
-                                    variant=\"ghost\"
-                                    size=\"sm\"
+                                    variant="ghost"
+                                    size="sm"
                                     onClick={() => setGeneratedThread(null)}
                                 >
-                                    <RefreshCw className=\"h-3 w-3 mr-1\" />
+                                    <RefreshCw className="h-3 w-3 mr-1" />
                                     Regenerate
                                 </Button>
                             </div>
 
                             {/* Tweets */}
-                            <div className=\"space-y-2\">
+                            <div className="space-y-2">
                                 {generatedThread.tweets.map((tweet) => (
                                     <div
                                         key={tweet.number}
-                                        className=\"p-3 border rounded-lg bg-background\"
+                                        className="p-3 border rounded-lg bg-background"
                                     >
                                         {editingTweet === tweet.number ? (
-                                            <div className=\"space-y-2\">
+                                            <div className="space-y-2">
                                                 <textarea
                                                     value={tweet.content}
                                                     onChange={(e) =>
                                                         handleEditTweet(tweet.number, e.target.value)
                                                     }
-                                                    className=\"w-full p-2 text-sm border rounded min-h-[80px]\"
+                                                    className="w-full p-2 text-sm border rounded min-h-[80px]"
                                                 />
-                                                <div className=\"flex gap-2\">
+                                                <div className="flex gap-2">
                                                     <Button
-                                                        variant=\"default\"
-                                                        size=\"sm\"
+                                                        variant="default"
+                                                        size="sm"
                                                         onClick={() => setEditingTweet(null)}
                                                     >
                                                         Save
                                                     </Button>
                                                     <Button
-                                                        variant=\"outline\"
-                                                        size=\"sm\"
+                                                        variant="outline"
+                                                        size="sm"
                                                         onClick={() => setEditingTweet(null)}
                                                     >
                                                         Cancel
@@ -315,26 +315,26 @@ export function ThreadGeneratorPanel({
                                             </div>
                                         ) : (
                                             <>
-                                                <div className=\"flex items-start justify-between mb-2\">
-                                                    <span className=\"text-xs font-semibold text-muted-foreground\">
+                                                <div className="flex items-start justify-between mb-2">
+                                                    <span className="text-xs font-semibold text-muted-foreground">
                                                         {tweet.number}/{generatedThread.tweets.length}
                                                     </span>
-                                                    <div className=\"flex gap-1\">
+                                                    <div className="flex gap-1">
                                                         <button
-                                                            className=\"p-1 hover:bg-muted rounded\"
+                                                            className="p-1 hover:bg-muted rounded"
                                                             onClick={() => setEditingTweet(tweet.number)}
                                                         >
-                                                            <Edit2 className=\"h-3 w-3\" />
+                                                            <Edit2 className="h-3 w-3" />
                                                         </button>
                                                         <button
-                                                            className=\"p-1 hover:bg-muted rounded\"
+                                                            className="p-1 hover:bg-muted rounded"
                                                             onClick={() => handleDeleteTweet(tweet.number)}
                                                         >
-                                                            <Trash2 className=\"h-3 w-3\" />
+                                                            <Trash2 className="h-3 w-3" />
                                                         </button>
                                                     </div>
                                                 </div>
-                                                <p className=\"text-sm whitespace-pre-wrap\">{tweet.content}</p>
+                                                <p className="text-sm whitespace-pre-wrap">{tweet.content}</p>
                                             </>
                                         )}
                                     </div>
@@ -343,11 +343,11 @@ export function ThreadGeneratorPanel({
 
                             {/* Add Tweet Button */}
                             <Button
-                                variant=\"outline\"
-                                className=\"w-full\"
+                                variant="outline"
+                                className="w-full"
                                 onClick={handleAddTweet}
                             >
-                                <Plus className=\"h-4 w-4 mr-2\" />
+                                <Plus className="h-4 w-4 mr-2" />
                                 Add Tweet
                             </Button>
                         </div>
@@ -357,21 +357,21 @@ export function ThreadGeneratorPanel({
 
             {/* Footer - Export Options */}
             {generatedThread && (
-                <div className=\"border-t p-3 space-y-2\">
+                <div className="border-t p-3 space-y-2">
                     <Button
-                        variant=\"default\"
-                        className=\"w-full\"
-                        onClick={() => onExport?.(\"copy\")}
+                        variant="default"
+                        className="w-full"
+                        onClick={() => onExport?.("copy")}
                     >
-                        <Copy className=\"h-4 w-4 mr-2\" />
+                        <Copy className="h-4 w-4 mr-2" />
                         Copy All Tweets
                     </Button>
                     <Button
-                        variant=\"outline\"
-                        className=\"w-full\"
-                        onClick={() => onExport?.(\"twitter\")}
+                        variant="outline"
+                        className="w-full"
+                        onClick={() => onExport?.("twitter")}
                     >
-                        <Twitter className=\"h-4 w-4 mr-2\" />
+                        <Twitter className="h-4 w-4 mr-2" />
                         Tweet Now
                     </Button>
                 </div>
