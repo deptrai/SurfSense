@@ -1,9 +1,14 @@
 # Epic 1: Trợ lý Crypto AI trên Trình duyệt
 
-**Trạng thái:** ✅ ĐÃ HOÀN THÀNH  
-**Giai đoạn:** Phase 1  
-**Thời gian:** 2 tuần  
+**Trạng thái:** 🚧 ĐANG TRIỂN KHAI (IN PROGRESS)
+**Giai đoạn:** Phase 1
+**Thời gian:** 2 tuần
 **Mức độ ưu tiên:** P0 (Nghiêm trọng)
+
+**Tiến độ:**
+- ✅ Frontend Extension: 80% hoàn thành (Stories 1.1-1.6, 1.7-1.9)
+- ⏳ Backend APIs: 0% (Story 1.0 - Authentication chưa bắt đầu)
+- ⏳ API Integrations: 0% (DexScreener, DefiLlama chưa implement)
 
 ---
 
@@ -231,11 +236,13 @@ const token = await storage.get("auth_token");
 ## User Stories
 
 ### Story 1.0: Hệ thống Xác thực (Authentication System)
-**[FR-EXT-00]** ⚠️ **P0 BLOCKER**
+**[FR-EXT-00]** ⚠️ **P0 BLOCKER** - ⏳ **CHƯA BẮT ĐẦU**
 
-**Là một** SurfSense user,  
-**Tôi muốn** đăng nhập vào extension với tài khoản SurfSense của tôi,  
+**Là một** SurfSense user,
+**Tôi muốn** đăng nhập vào extension với tài khoản SurfSense của tôi,
 **Để** extension có thể đồng bộ settings, lịch sử chat, và truy cập backend APIs.
+
+**Trạng thái:** ⏳ Backend APIs chưa được implement
 
 **Tiêu chí chấp nhận (Acceptance Criteria - BDD Format):**
 
@@ -378,10 +385,10 @@ GET  /auth/me              // Get current user
 ---
 
 ### Story 1.1: Kiến trúc Side Panel (Side Panel Architecture)
-**[FR-EXT-01]**
+**[FR-EXT-01]** ✅ **COMPLETED**
 
-**Là một** crypto trader,  
-**Tôi muốn** mở AI assistant dưới dạng side panel (không phải popup nhỏ),  
+**Là một** crypto trader,
+**Tôi muốn** mở AI assistant dưới dạng side panel (không phải popup nhỏ),
 **Để** tôi có thể chat với AI trong khi vẫn xem được DexScreener chart.
 
 **Tiêu chí chấp nhận (Acceptance Criteria - BDD Format):**
@@ -439,10 +446,10 @@ chrome.sidePanel
 ---
 
 ### Story 1.2: Tích hợp Giao diện AI Chat (AI Chat Interface Integration)
-**[FR-EXT-02, FR-INT-01]** ⭐ **AI MOAT**
+**[FR-EXT-02, FR-INT-01]** ⭐ **AI MOAT** - ✅ **COMPLETED**
 
-**Là một** crypto trader,  
-**Tôi muốn** chat với AI trong extension giống như trên web dashboard,  
+**Là một** crypto trader,
+**Tôi muốn** chat với AI trong extension giống như trên web dashboard,
 **Để** tôi có trải nghiệm nhất quán và đầy đủ tính năng.
 
 **Tiêu chí chấp nhận (Acceptance Criteria - BDD Format):**
@@ -560,10 +567,10 @@ import { ScrapeWebpageToolUI } from "@/components/tool-ui/scrape-webpage";
 ---
 
 ### Story 1.3: Phát hiện Ngữ cảnh Trang (Page Context Detection)
-**[FR-EXT-03]**
+**[FR-EXT-03]** ✅ **COMPLETED**
 
-**Là một** crypto trader đang xem DexScreener,  
-**Tôi muốn** AI tự động hiểu tôi đang xem token nào,  
+**Là một** crypto trader đang xem DexScreener,
+**Tôi muốn** AI tự động hiểu tôi đang xem token nào,
 **Để** tôi không cần copy/paste địa chỉ token mỗi lần.
 
 **Tiêu chí chấp nhận (Acceptance Criteria - BDD Format):**
@@ -638,10 +645,10 @@ function extractDexScreenerData(): TokenData {
 ---
 
 ### Story 1.4: Tích hợp Thông minh với DexScreener
-**[FR-EXT-04]**
+**[FR-EXT-04]** ✅ **COMPLETED**
 
-**Là một** crypto trader trên DexScreener,  
-**Tôi muốn** thấy thẻ thông tin token (token info card) ở đầu side panel,  
+**Là một** crypto trader trên DexScreener,
+**Tôi muốn** thấy thẻ thông tin token (token info card) ở đầu side panel,
 **Để** tôi có thể nhanh chóng kiểm tra độ an toàn hoặc xem các holders.
 
 **Tiêu chí chấp nhận (Acceptance Criteria - BDD Format):**
@@ -702,10 +709,10 @@ function extractDexScreenerData(): TokenData {
 ---
 
 ### Story 1.5: Lưu nhanh trang (Quick Capture)
-**[FR-EXT-05]**
+**[FR-EXT-05]** ✅ **COMPLETED**
 
-**Là một** crypto trader,  
-**Tôi muốn** lưu trang hiện tại vào không gian tìm kiếm (search space),  
+**Là một** crypto trader,
+**Tôi muốn** lưu trang hiện tại vào không gian tìm kiếm (search space),
 **Để** tôi có thể tham khảo lại sau.
 
 **Tiêu chí chấp nhận (Acceptance Criteria - BDD Format):**
@@ -747,10 +754,10 @@ function extractDexScreenerData(): TokenData {
 ---
 
 ### Story 1.6: Đồng bộ Cài đặt (Settings Sync) với Frontend
-**[FR-EXT-06]**
+**[FR-EXT-06]** ⏳ **PENDING** - Backend APIs chưa sẵn sàng
 
-**Là một** SurfSense user,  
-**Tôi muốn** extension sử dụng cùng model và search space như web dashboard,  
+**Là một** SurfSense user,
+**Tôi muốn** extension sử dụng cùng model và search space như web dashboard,
 **Để** tôi không phải cấu hình lại.
 
 **Tiêu chí chấp nhận (Acceptance Criteria - BDD Format):**
