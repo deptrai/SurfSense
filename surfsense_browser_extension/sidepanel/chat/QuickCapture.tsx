@@ -39,8 +39,8 @@ export function QuickCapture() {
     };
 
     return (
-        <div className="sticky bottom-0 border-t p-3 bg-background">
-            <Button className="w-full" onClick={handleCapture}>
+        <div className="border-t p-3 bg-background">
+            <Button className="w-full" variant="outline" onClick={handleCapture}>
                 <Camera className="mr-2 h-4 w-4" />
                 Save Current Page
             </Button>

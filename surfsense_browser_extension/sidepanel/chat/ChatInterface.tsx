@@ -511,24 +511,27 @@ What would you like to know?`;
                 )}
             </div>
 
-            {/* Chat input (only in chat mode) */}
+            {/* Chat input and quick capture (only in chat mode) */}
             {viewMode === "chat" && (
-                <ChatInput
-                    onSend={handleSendMessage}
-                    disabled={isStreaming}
-                    placeholder={
-                        context?.pageType === "dexscreener"
-                            ? `Ask about ${context.tokenData?.tokenSymbol || "this token"}...`
-                            : "Ask me anything..."
-                    }
-                    suggestions={messages.length === 0 ? [] : quickSuggestions}
-                    onSuggestionClick={handleSuggestionClick}
-                />
+                <div className="flex-shrink-0">
+                    <ChatInput
+                        onSend={handleSendMessage}
+                        disabled={isStreaming}
+                        placeholder={
+                            context?.pageType === "dexscreener"
+                                ? `Ask about ${context.tokenData?.tokenSymbol || "this token"}...`
+                                : "Ask me anything..."
+                        }
+                        suggestions={messages.length === 0 ? [] : quickSuggestions}
+                        onSuggestionClick={handleSuggestionClick}
+                    />
+                    <QuickCapture />
+                </div>
             )}
 
             {/* Back to chat button for other views */}
             {viewMode !== "chat" && (
-                <div className="border-t p-3">
+                <div className="flex-shrink-0 border-t p-3">
                     <button
                         className="w-full py-2 text-sm text-center text-primary hover:bg-primary/5 rounded-md transition-colors"
                         onClick={() => setViewMode("chat")}
@@ -537,9 +540,6 @@ What would you like to know?`;
                     </button>
                 </div>
             )}
-
-            {/* Quick capture button */}
-            <QuickCapture />
 
             {/* Alert configuration modal */}
             <AlertConfigModal

@@ -179,43 +179,43 @@ export function TokenInfoCard({
                 </div>
             </div>
 
-            {/* Quick actions - now with 4 buttons */}
-            <div className="grid grid-cols-4 gap-1.5 mt-3">
+            {/* Quick actions - 4 buttons in grid, responsive */}
+            <div className="grid grid-cols-4 gap-1 mt-3">
                 <Button
                     size="sm"
                     variant="outline"
-                    className="h-8 px-2 text-xs"
+                    className="h-8 px-1.5 text-xs flex items-center justify-center"
                     onClick={() => handleQuickAction("safety")}
                 >
-                    <Shield className="mr-1 h-3 w-3" />
-                    Safety
+                    <Shield className="h-3 w-3 mr-0.5 flex-shrink-0" />
+                    <span className="truncate">Safety</span>
                 </Button>
                 <Button
                     size="sm"
                     variant="outline"
-                    className="h-8 px-2 text-xs"
+                    className="h-8 px-1.5 text-xs flex items-center justify-center"
                     onClick={() => handleQuickAction("holders")}
                 >
-                    <Users className="mr-1 h-3 w-3" />
-                    Holders
+                    <Users className="h-3 w-3 mr-0.5 flex-shrink-0" />
+                    <span className="truncate">Holders</span>
                 </Button>
                 <Button
                     size="sm"
                     variant="outline"
-                    className="h-8 px-2 text-xs"
+                    className="h-8 px-1.5 text-xs flex items-center justify-center"
                     onClick={() => handleQuickAction("predict")}
                 >
-                    <TrendingUp className="mr-1 h-3 w-3" />
-                    Predict
+                    <TrendingUp className="h-3 w-3 mr-0.5 flex-shrink-0" />
+                    <span className="truncate">Predict</span>
                 </Button>
                 <Button
                     size="sm"
                     variant="outline"
-                    className="h-8 px-2 text-xs text-orange-600 hover:text-orange-700 hover:bg-orange-50 dark:text-orange-400 dark:hover:bg-orange-950"
+                    className="h-8 px-1.5 text-xs flex items-center justify-center text-orange-600 hover:text-orange-700 hover:bg-orange-50 dark:text-orange-400 dark:hover:bg-orange-950"
                     onClick={() => handleQuickAction("rug")}
                 >
-                    <AlertTriangle className="mr-1 h-3 w-3" />
-                    Rug
+                    <AlertTriangle className="h-3 w-3 mr-0.5 flex-shrink-0" />
+                    <span className="truncate">Rug</span>
                 </Button>
             </div>
         </div>

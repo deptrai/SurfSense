@@ -178,15 +178,15 @@ export function TokenAnalysisWidget({
             )}
 
             {/* Action buttons */}
-            <div className="flex gap-2">
-                <Button size="sm" variant="outline" onClick={onAddToWatchlist} className="flex-1">
-                    <Star className="h-3 w-3 mr-1" />
-                    {isInWatchlist ? "In Watchlist" : "Add to Watchlist"}
+            <div className="flex gap-1.5 flex-wrap">
+                <Button size="sm" variant="outline" onClick={onAddToWatchlist} className="flex-1 min-w-0 text-xs h-8">
+                    <Star className="h-3 w-3 mr-1 flex-shrink-0" />
+                    <span className="truncate">{isInWatchlist ? "In Watchlist" : "Add to Watchlist"}</span>
                 </Button>
-                <Button size="sm" variant="outline" onClick={onSetAlert}>
+                <Button size="sm" variant="outline" onClick={onSetAlert} className="h-8 w-8 p-0 flex-shrink-0">
                     <Bell className="h-3 w-3" />
                 </Button>
-                <Button size="sm" variant="default" onClick={onAnalyzeFurther}>
+                <Button size="sm" variant="default" onClick={onAnalyzeFurther} className="text-xs h-8">
                     Analyze More
                 </Button>
             </div>
