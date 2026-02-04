@@ -8,7 +8,9 @@ import {
     Star,
     Bell,
     MessageSquare,
-    Plug
+    Plug,
+    Search,
+    X
 } from "lucide-react";
 import { Button } from "@/routes/ui/button";
 import { cn } from "~/lib/utils";
@@ -39,12 +41,15 @@ export interface ChatHeaderProps {
     onLogout?: () => void;
     /** Callback when settings item is clicked */
     onSettingsClick?: (item: string) => void;
+    /** Callback when token search is triggered */
+    onTokenSearch?: (query: string) => void;
 }
 
 /**
- * Enhanced Chat header with branding, space selector, settings, and user menu
+ * Enhanced Chat header with branding, token search, space selector, settings, and user menu
  *
  * Features:
+ * - Universal token search bar (works on any page)
  * - Search space selector dropdown
  * - Settings dropdown with full menu
  * - User avatar with logout option
@@ -57,9 +62,11 @@ export function ChatHeader({
     userAvatar,
     onLogout,
     onSettingsClick,
+    onTokenSearch,
 }: ChatHeaderProps) {
     const [spaceOpen, setSpaceOpen] = useState(false);
     const [settingsOpen, setSettingsOpen] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
 
     const defaultSpaces: SearchSpace[] = [
         { id: "crypto", name: "Crypto", icon: "🪙" },
@@ -70,81 +77,118 @@ export function ChatHeader({
     const spaces = searchSpaces.length > 0 ? searchSpaces : defaultSpaces;
     const currentSpace = selectedSpace || spaces[0];
 
+    const handleSearch = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (searchQuery.trim() && onTokenSearch) {
+            onTokenSearch(searchQuery.trim());
+        }
+    };
+
+    const handleClearSearch = () => {
+        setSearchQuery("");
+    };
+
     return (
-        <div className="flex items-center justify-between p-3 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            {/* Logo and brand */}
-            <div className="flex items-center gap-2">
-                <img
-                    src="/assets/icon.png"
-                    alt="SurfSense"
-                    className="w-6 h-6"
-                />
-                <h1 className="font-semibold text-base">SurfSense</h1>
-            </div>
+        <div className="flex flex-col border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+            {/* Top row: Logo, Space Selector, Settings */}
+            <div className="flex items-center justify-between p-3 pb-2">
+                {/* Logo and brand */}
+                <div className="flex items-center gap-2">
+                    <img
+                        src="/assets/icon.png"
+                        alt="SurfSense"
+                        className="w-6 h-6"
+                    />
+                    <h1 className="font-semibold text-base">SurfSense</h1>
+                </div>
 
-            {/* Search Space Selector */}
-            <Popover open={spaceOpen} onOpenChange={setSpaceOpen}>
-                <PopoverTrigger asChild>
-                    <Button
-                        variant="outline"
-                        size="sm"
-                        className="h-8 gap-1 px-2"
-                    >
-                        <span>{currentSpace.icon}</span>
-                        <span className="max-w-[80px] truncate">{currentSpace.name}</span>
-                        <ChevronDown className="h-3 w-3 opacity-50" />
-                    </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-48 p-1" align="center">
-                    <div className="space-y-0.5">
-                        {spaces.map((space) => (
-                            <button
-                                key={space.id}
-                                className={cn(
-                                    "w-full flex items-center gap-2 px-2 py-1.5 rounded-md text-sm transition-colors",
-                                    currentSpace.id === space.id
-                                        ? "bg-primary/10 text-primary"
-                                        : "hover:bg-muted"
-                                )}
-                                onClick={() => {
-                                    onSpaceChange?.(space);
-                                    setSpaceOpen(false);
-                                }}
-                            >
-                                <span>{space.icon}</span>
-                                <span>{space.name}</span>
-                            </button>
-                        ))}
-                    </div>
-                </PopoverContent>
-            </Popover>
-
-            {/* Right side actions */}
-            <div className="flex items-center gap-1">
-                {/* Settings Dropdown */}
-                <Popover open={settingsOpen} onOpenChange={setSettingsOpen}>
+                {/* Search Space Selector */}
+                <Popover open={spaceOpen} onOpenChange={setSpaceOpen}>
                     <PopoverTrigger asChild>
-                        <Button variant="ghost" size="icon" className="h-8 w-8">
-                            <Settings className="h-4 w-4" />
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            className="h-8 gap-1 px-2"
+                        >
+                            <span>{currentSpace.icon}</span>
+                            <span className="max-w-[80px] truncate">{currentSpace.name}</span>
+                            <ChevronDown className="h-3 w-3 opacity-50" />
                         </Button>
                     </PopoverTrigger>
-                    <PopoverContent className="w-56 p-1" align="end">
-                        <SettingsMenu
-                            onItemClick={(item) => {
-                                onSettingsClick?.(item);
-                                setSettingsOpen(false);
-                            }}
-                            onLogout={onLogout}
-                        />
+                    <PopoverContent className="w-48 p-1" align="center">
+                        <div className="space-y-0.5">
+                            {spaces.map((space) => (
+                                <button
+                                    key={space.id}
+                                    className={cn(
+                                        "w-full flex items-center gap-2 px-2 py-1.5 rounded-md text-sm transition-colors",
+                                        currentSpace.id === space.id
+                                            ? "bg-primary/10 text-primary"
+                                            : "hover:bg-muted"
+                                    )}
+                                    onClick={() => {
+                                        onSpaceChange?.(space);
+                                        setSpaceOpen(false);
+                                    }}
+                                >
+                                    <span>{space.icon}</span>
+                                    <span>{space.name}</span>
+                                </button>
+                            ))}
+                        </div>
                     </PopoverContent>
                 </Popover>
 
-                {/* User Avatar */}
-                <UserAvatar
-                    name={userName}
-                    avatarUrl={userAvatar}
-                    onLogout={onLogout}
-                />
+                {/* Right side actions */}
+                <div className="flex items-center gap-1">
+                    {/* Settings Dropdown */}
+                    <Popover open={settingsOpen} onOpenChange={setSettingsOpen}>
+                        <PopoverTrigger asChild>
+                            <Button variant="ghost" size="icon" className="h-8 w-8">
+                                <Settings className="h-4 w-4" />
+                            </Button>
+                        </PopoverTrigger>
+                        <PopoverContent className="w-56 p-1" align="end">
+                            <SettingsMenu
+                                onItemClick={(item) => {
+                                    onSettingsClick?.(item);
+                                    setSettingsOpen(false);
+                                }}
+                                onLogout={onLogout}
+                            />
+                        </PopoverContent>
+                    </Popover>
+
+                    {/* User Avatar */}
+                    <UserAvatar
+                        name={userName}
+                        avatarUrl={userAvatar}
+                        onLogout={onLogout}
+                    />
+                </div>
+            </div>
+
+            {/* Bottom row: Token Search Bar */}
+            <div className="px-3 pb-2">
+                <form onSubmit={handleSearch} className="relative">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+                    <input
+                        type="text"
+                        placeholder="Search token (symbol, name, or address)..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full h-8 pl-9 pr-8 text-sm rounded-md border border-input bg-background/50 focus:bg-background focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
+                    />
+                    {searchQuery && (
+                        <button
+                            type="button"
+                            onClick={handleClearSearch}
+                            className="absolute right-2 top-1/2 -translate-y-1/2 h-5 w-5 flex items-center justify-center rounded-sm hover:bg-muted transition-colors"
+                        >
+                            <X className="h-3 w-3 text-muted-foreground" />
+                        </button>
+                    )}
+                </form>
             </div>
         </div>
     );

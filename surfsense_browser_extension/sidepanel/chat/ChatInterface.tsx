@@ -431,6 +431,46 @@ What would you like to know?`;
         ? ["Add to watchlist", "Is this safe?", "Set price alert"]
         : ["Show my watchlist", "What's trending?", "Analyze BULLA"];
 
+    // Handle token search from header
+    const handleTokenSearch = async (query: string) => {
+        // Add user message
+        const userMessage: Message = {
+            id: Date.now().toString(),
+            role: "user",
+            content: `Analyze ${query}`,
+            timestamp: new Date(),
+        };
+        setMessages((prev) => [...prev, userMessage]);
+
+        // Simulate AI response with token analysis
+        setTimeout(() => {
+            const aiMessage: Message = {
+                id: (Date.now() + 1).toString(),
+                role: "assistant",
+                content: `Searching for token: ${query}...`,
+                timestamp: new Date(),
+                widget: {
+                    type: "token_analysis",
+                    data: {
+                        symbol: query.toUpperCase(),
+                        name: `${query} Token`,
+                        chain: "solana",
+                        price: "$0.00001234",
+                        priceChange24h: 156.7,
+                        marketCap: "$2.1M",
+                        volume24h: "$1.2M",
+                        liquidity: "$450K",
+                        safetyScore: MOCK_SAFETY_SCORE,
+                        holderCount: 12456,
+                        top10HolderPercent: 35,
+                    },
+                    isInWatchlist: false,
+                },
+            };
+            setMessages((prev) => [...prev, aiMessage]);
+        }, 500);
+    };
+
     return (
         <div className="flex flex-col h-full">
             {/* Header with space selector and settings */}
@@ -441,6 +481,7 @@ What would you like to know?`;
                 userName={userName}
                 onSettingsClick={handleSettingsClick}
                 onLogout={handleLogout}
+                onTokenSearch={handleTokenSearch}
             />
 
             {/* Token info card (only on DexScreener) */}
